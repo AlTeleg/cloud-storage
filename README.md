@@ -38,7 +38,7 @@ git clone https://github.com/AlTeleg/cloud-storage-back.git
 
 ## Шаг 2: Установка зависимостей для backend
 
-cd cloud-storage-back
+cd cloud-storage
 pip install -r requirements.txt
 
 ## Шаг 3: Генерация и применение миграций 
