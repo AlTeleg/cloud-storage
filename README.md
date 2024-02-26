@@ -2,7 +2,7 @@
 
 ## Шаг 1: Клонирование репозитория
 
-git clone https://github.com/AlTeleg/cloud-storage.git
+git clone https://github.com/AlTeleg/cloud-storage
 
 ## Шаг 2: Установка зависимостей для frontend
 
@@ -34,7 +34,7 @@ python manage.py runserver
 
 ## Шаг 1: Клонирование репозитория backend
 
-git clone https://github.com/AlTeleg/cloud-storage-back.git
+git clone https://github.com/AlTeleg/cloud-storage-back
 
 ## Шаг 2: Установка зависимостей для backend
 
