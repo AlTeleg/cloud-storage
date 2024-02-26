@@ -20,8 +20,9 @@ npm run build
 cd ../backend
 pip install -r requirements.txt
 
-## Шаг 5: Применение миграций 
+## Шаг 5: Генерация и применение миграций 
 
+python manage.py makemigrations
 python manage.py migrate
 
 ## Шаг 6: Запуск сервера backend
@@ -44,8 +45,9 @@ git clone https://github.com/AlTeleg/cloud-storage-back.git
 cd cloud-storage-back
 pip install -r requirements.txt
 
-## Шаг 3: Применение миграций 
+## Шаг 3: Генерация и применение миграций 
 
+python manage.py makemigrations
 python manage.py migrate
 
 ## Шаг 4: Запуск сервера backend
