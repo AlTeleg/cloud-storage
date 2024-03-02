@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import NavigationMenu from './accounts/NavigationMenu'
+import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -14,7 +14,7 @@ const FileUpload = () => {
     setComment(event.target.value);
   };
 
-  const handleSubmit =  (event) => {
+  const handleSubmit =  async (event) => {
     event.preventDefault();
 
     const formData = new FormData();

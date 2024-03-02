@@ -1,6 +1,7 @@
-import React, { useState, useNavigate, useLocation } from 'react';
+import React, { useState, useLocation } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
-import NavigationMenu from './accounts/NavigationMenu'
+import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileChange = ({ fileId, fileName, fileComment }) => {
   const [newName, setNewName] = useState('');

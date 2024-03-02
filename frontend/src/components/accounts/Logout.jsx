@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { logout } from '../../services/api';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import NavigationMenu from 'NavigationMenu.jsx'
+import NavigationMenu from './NavigationMenu'
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');

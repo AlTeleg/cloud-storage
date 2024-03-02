@@ -16,7 +16,7 @@ const config = {
   module: {
     rules: [
       {
-         test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -31,21 +31,19 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        type: "asset/resource",
       },
     ],
   },
-};
-
-resolve: {
-        extensions: ['.js', '.jsx']
-    }
-
-module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-  } else {
-    config.mode = "development";
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
-  return config;
 };
+
+if (isProduction) {
+  config.mode = "production";
+} else {
+  config.mode = "development";
+}
+
+module.exports = config;

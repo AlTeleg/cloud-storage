@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import NavigationMenu from './accounts/NavigationMenu'
+import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileDownload = (fileId) => {
   const [specialLink, setSpecialLink] = useState('');

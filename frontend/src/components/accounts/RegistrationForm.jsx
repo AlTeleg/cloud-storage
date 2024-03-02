@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
-import NavigationMenu from 'NavigationMenu'
+import NavigationMenu from './NavigationMenu'
 
 const RegistrationForm = () => {
   const navigate = useNavigate();

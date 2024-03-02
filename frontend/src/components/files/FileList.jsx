@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFiles, deleteFile} from '../../services/api';
 import { Link, useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
-import NavigationMenu from './accounts/NavigationMenu'
+import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileList = () => {
   const [files, setFiles] = useState([]);

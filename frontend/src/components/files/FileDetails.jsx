@@ -1,22 +1,21 @@
-import React, { useState, useEffect, useNavigate } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
-import fileOtherImg from '../../img/file.png'
-import NavigationMenu from './accounts/NavigationMenu'
-import filetype from 'file-type';
-
+import fileImg from '../../img/file.png'
+import NavigationMenu from '../accounts/NavigationMenu'
+import { FileViewer } from 'react-file-viewer';
 
 const FileDetails = ({ fileId }) => {
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
-  const [content, setContent] = useState(null);
 
   useEffect(() => {
     fetchFileDetails();
-  });
+  }, []);
 
   const fetchFileDetails = async () => {
     try {
-      const response = await api.get('/files/${fileId}');
+      const response = await api.get(`/files/${fileId}`);
       setFile(response.data);
     } catch (error) {
       console.error(error);
@@ -36,13 +35,14 @@ const FileDetails = ({ fileId }) => {
     return <div>Loading file details...</div>;
   }
 
+  const fileExtension = file.name.split('.').pop().toLowerCase();
+  const mediaTypes = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'];
+
   return (
     <div>
-      <NavigationMenu/ >
-      {guess_mime(file.file_data).startswith('image') ? (
-        <img src={file.path} alt="Image" />
-      ) : guess_mime(file.file_data).startswith('video') ? (
-        <video src={file.path} controls />
+      <NavigationMenu />
+      {mediaTypes.includes(fileExtension) ? (
+        <FileViewer fileType={fileExtension} filePath={file.path} />
       ) : (
         <img src={fileImg} alt="File" />
       )}

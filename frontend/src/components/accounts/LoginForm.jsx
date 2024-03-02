@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import { useDispatch } from 'react-redux';
-import NavigationMenu from 'NavigationMenu.jsx'
+import NavigationMenu from './NavigationMenu'
 
 const LoginForm = () => {
   const navigate = useNavigate();

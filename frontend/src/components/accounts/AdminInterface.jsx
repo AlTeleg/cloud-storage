@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, Route, Routes } from 'react-router-dom';
 import { loginUser, deleteUser, viewUserFiles, deleteFile, createUser, getUsers, getAllFiles } from '../../services/api';
-import NavigationMenu from 'NavigationMenu.jsx'
+import NavigationMenu from './NavigationMenu'
 
 const AdminInterface = () => {
   return (
@@ -174,9 +174,9 @@ const AllUsers = () => {
                 {file.name}
                 <button onClick={() => handleDeleteFile(file.id)}>Delete File</button>
               </li>
-              <button onClick={() => handleDeleteUser(selectedUser.id)}>Delete User</button>
             ))}
           </ul>
+          <button onClick={() => handleDeleteUser(selectedUser.id)}>Delete User</button>
         </div>
       ) : (
         <div>
@@ -191,9 +191,9 @@ const AllUsers = () => {
             ))}
           </ul>
         </div>
-          )}
-        <hr />
-        <button onClick={handleBackHome}>Back to home</button>
+      )}
+      <hr />
+      <button onClick={handleBackHome}>Back to home</button>
     </div>
   );
 };
