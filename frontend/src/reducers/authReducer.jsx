@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 const initialState = {
   isAuthenticated: false
@@ -21,6 +21,8 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(authReducer);
+const store = configureStore({
+  reducer: authReducer
+});
 
 export default store;

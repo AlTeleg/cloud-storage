@@ -13,12 +13,13 @@ const Logout = () => {
   const handleLogout = async () => {
     try {
       response = await logout();
-      if response.ok:
+      if (response.ok) {
         setLogoutMessage(message);
         dispatch({ type: 'LOGOUT' });
         setTimeout(() => {
             navigate('/');
         }, 3000);
+      }
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -30,7 +31,7 @@ const Logout = () => {
       {logoutMessage && <p>{logoutMessage}</p>}
       {error && <p>{error}</p>}
       <hr/ >
-      <p>Are you sure you want to logout from your storage>?</p>
+      <p>Are you sure you want to logout from your storage?</p>
       <button onClick={handleLogout}>Confirm</button>
     </div>
   );

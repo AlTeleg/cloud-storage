@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileDownload = (fileId) => {
-  const [specialLink, setSpecialLink] = useState('');
 
   const downloadFile = async (fileId) => {
     try {
@@ -18,7 +17,6 @@ const FileDownload = (fileId) => {
       <NavigationMenu/ >
       <h2>Download File - id:{fileId}</h2>
       <button onClick={downloadFile}>Download</button>
-      )}
     </div>
   );
 };

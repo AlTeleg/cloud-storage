@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, Route, Routes } from 'react-router-dom';
-import { loginUser, deleteUser, viewUserFiles, deleteFile, createUser, getUsers, getAllFiles } from '../../services/api';
+import { deleteUser, deleteFile, createUser, getUsers, getAllFiles } from '../../services/api';
 import NavigationMenu from './NavigationMenu'
 
 const AdminInterface = () => {
