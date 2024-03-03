@@ -1,8 +1,8 @@
 import axios from 'axios';
-import DB_HOST from './config'
+import HOST from './config'
 
 const api = axios.create({
-  baseURL: DB_HOST
+  baseURL: HOST
 });
 
 export const loginUser = async userData => {

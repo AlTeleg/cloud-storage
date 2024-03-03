@@ -1,2 +1,2 @@
-const DB_HOST = 'localhost';
-export default DB_HOST;
+const HOST = '194.67.125.137:8000';
+export default HOST;
