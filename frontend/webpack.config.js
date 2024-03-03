@@ -7,6 +7,8 @@ const config = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "../backend/storage_server/static"),
+    publicPath: isProduction ? "/static/" : "/",
+    filename: "bundle.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
