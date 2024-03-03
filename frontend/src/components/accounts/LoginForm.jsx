@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
+import store from '../../reducers/authReducer'
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const LoginForm = () => {
     try {
       const response = await api.loginUser(formData);
       navigate('/files');
-      dispatch({ type: 'LOGIN' });
+      store.dispatch({ type: 'LOGIN' });
     } catch (error) {
     setError('Invalid username or password.');
       console.log(error);

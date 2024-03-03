@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { logout } from '../../services/api';
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
 import NavigationMenu from './NavigationMenu'
+import store from '../../reducers/authReducer'
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
       response = await logout();
       if (response.ok) {
         setLogoutMessage(message);
-        dispatch({ type: 'LOGOUT' });
+        store.dispatch({ type: 'LOGOUT' });
         setTimeout(() => {
             navigate('/');
         }, 3000);
