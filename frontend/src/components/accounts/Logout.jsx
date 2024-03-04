@@ -7,7 +7,7 @@ import store from '../../reducers/authReducer'
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const handleLogout = async () => {
     try {

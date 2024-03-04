@@ -19,8 +19,8 @@ const FileDownload = ({ fileId }) => {
         link.remove();
         navigate('/files/'); 
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

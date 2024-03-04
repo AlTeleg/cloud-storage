@@ -10,7 +10,7 @@ const LoginForm = () => {
     username: '',
     password: ''
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,9 +25,9 @@ const LoginForm = () => {
         store.dispatch({ type: 'LOGIN' });
         navigate('/home');
       }
-    } catch (e) {
-      setError(e);
-      console.error(e);
+    } catch (error) {
+      setError(error);
+      console.error(error);
     }
   };
 

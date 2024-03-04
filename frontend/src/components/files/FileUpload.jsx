@@ -27,8 +27,8 @@ const FileUpload = () => {
         setFile(null);
         setComment(null);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

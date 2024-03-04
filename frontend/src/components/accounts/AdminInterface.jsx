@@ -115,8 +115,8 @@ const AllUsers = () => {
       if (response.ok) {
         setUsers(response.users);
       }
-    } catch (e) {
-      console.error('Failed to fetch users:', e);
+    } catch (error) {
+      console.error('Failed to fetch users:', error);
     }
   };
 
@@ -126,8 +126,8 @@ const AllUsers = () => {
       if (response.ok) {
         fetchUsers();
       }
-    } catch (e) {
-      console.error('Failed to delete user:', e);
+    } catch (error) {
+      console.error('Failed to delete user:', error);
     }
   };
 
@@ -138,8 +138,8 @@ const AllUsers = () => {
         setSelectedUserFiles(response.files);
         setSelectedUser(username);
       }
-    } catch (e) {
-      console.error('Failed to fetch user files:', e);
+    } catch (error) {
+      console.error('Failed to fetch user files:', error);
     }
   };
 
@@ -149,8 +149,8 @@ const AllUsers = () => {
       if (response.ok) {
         setFiles(response.files);
       }
-    } catch (e) {
-      console.error('Failed to get files:', e);
+    } catch (error) {
+      console.error('Failed to get files:', error);
     }
   };
 
@@ -160,8 +160,8 @@ const AllUsers = () => {
       if (response.ok) {
         fetchFiles();
       }
-    } catch (e) {
-      console.error('Failed to delete file:', e);
+    } catch (error) {
+      console.error('Failed to delete file:', error);
     }
   };
 

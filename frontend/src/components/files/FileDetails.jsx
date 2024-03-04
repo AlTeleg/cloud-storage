@@ -30,8 +30,8 @@ const FileDetails = ({ fileId }) => {
       if (response.ok) {
         navigate('/files/')
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

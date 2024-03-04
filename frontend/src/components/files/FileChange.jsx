@@ -16,8 +16,8 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
       if (response.ok) {
         setName(newName);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -27,8 +27,8 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
       if (response.ok) {
         setComment(newComment);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -38,8 +38,8 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
       if (response.ok) {
         navigate('/files/')
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

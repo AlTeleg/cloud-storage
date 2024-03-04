@@ -18,8 +18,8 @@ const FileList = () => {
       if (response.ok) {
         setFiles(response.files);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -29,8 +29,8 @@ const FileList = () => {
       if (response.ok) {
         fetchFiles();
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

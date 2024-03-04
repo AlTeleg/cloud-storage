@@ -17,8 +17,8 @@ const HomePage = () => {
         if (response.ok) {
           setFiles(response.files);
         }
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.error(error);
       }
     };
 
