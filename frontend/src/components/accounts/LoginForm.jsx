@@ -20,12 +20,14 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      await Api.loginUser(formData);
-      navigate('/files');
-      store.dispatch({ type: 'LOGIN' });
-    } catch (error) {
-    setError('Invalid username or password.');
-      console.log(error);
+      const response = await Api.loginUser(formData);
+      if (response.ok) {
+        store.dispatch({ type: 'LOGIN' });
+        navigate('/home');
+      }
+    } catch (e) {
+      setError(e);
+      console.error(e);
     }
   };
 

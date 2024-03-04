@@ -58,11 +58,13 @@ const RegistrationForm = () => {
     if (validateForm()) {
       try {
         delete formData.confirmPassword;
-        await Api.registerUser(formData);
-        store.dispatch({ type: 'LOGIN' });
-        navigate('/home');
-      } catch (error) {
-        console.log(error);
+        const response = await Api.registerUser(formData);
+        if (response.ok) {
+          store.dispatch({ type: 'LOGIN' });
+          navigate('/home');
+        }
+      } catch (e) {
+        console.error(e);
       }
     }
   };

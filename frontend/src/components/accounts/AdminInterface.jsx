@@ -46,10 +46,12 @@ const CreateUser = () => {
           is_superuser: IsSuperuser,
         },
       };
-      await Api.createUser(userData);
-      navigate('/admin/users')
-    } catch (error) {
-      console.error('Failed to create user:', error);
+      const response = await Api.createUser(userData);
+      if (response.ok) {
+        navigate('/admin/users')
+      }
+    } catch (e) {
+      console.error('Failed to create user:', e);
     }
   };
 
@@ -100,6 +102,7 @@ const CreateUser = () => {
 const AllUsers = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+  const [selectedUserFiles, setSelectedUserFiles] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
@@ -108,50 +111,62 @@ const AllUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const usersData = await Api.getUsers();
-      setUsers(usersData);
-    } catch (error) {
-      console.error('Failed to fetch users:', error);
+      const response = await Api.getUsers();
+      if (response.ok) {
+        setUsers(response.users);
+      }
+    } catch (e) {
+      console.error('Failed to fetch users:', e);
     }
   };
 
   const handleDeleteUser = async (userId) => {
     try {
-      await Api.deleteUser(userId);
-      fetchUsers();
-    } catch (error) {
-      console.error('Failed to delete user:', error);
+      const response = await Api.deleteUser(userId);
+      if (response.ok) {
+        fetchUsers();
+      }
+    } catch (e) {
+      console.error('Failed to delete user:', e);
     }
   };
 
-  const handleViewUserFiles = async (userId) => {
+  const handleViewUserFiles = async (userId, username) => {
     try {
-      const userData = await Api.getAllFiles(userId);
-      setSelectedUser(userData);
-    } catch (error) {
-      console.error('Failed to fetch user files:', error);
+      const response = await Api.getAllFiles(filter=userId);
+      if (response.ok) {
+        setSelectedUserFiles(response.files);
+        setSelectedUser(username);
+      }
+    } catch (e) {
+      console.error('Failed to fetch user files:', e);
     }
   };
 
   const fetchFiles = async () => {
     try {
-      const filesData = await Api.getAllFiles();
-      setFiles(filesData);
-    } catch (error) {
-      console.error('Failed to get files:', error);
+      const response = await Api.getAllFiles();
+      if (response.ok) {
+        setFiles(response.files);
+      }
+    } catch (e) {
+      console.error('Failed to get files:', e);
     }
   };
 
   const handleDeleteFile = async (fileId) => {
     try {
-      await Api.deleteFile(fileId);
-      fetchFiles();
-    } catch (error) {
-      console.error('Failed to delete file:', error);
+      const response = await Api.deleteFile(fileId);
+      if (response.ok) {
+        fetchFiles();
+      }
+    } catch (e) {
+      console.error('Failed to delete file:', e);
     }
   };
 
   const handleGoBack = () => {
+    setSelectedUserFiles(null);
     setSelectedUser(null);
   };
 
@@ -169,7 +184,7 @@ const AllUsers = () => {
           </h3>
           <h4>Files:</h4>
           <ul>
-            {selectedUser.files.map((file) => (
+            {selectedUserFiles.map((file) => (
               <li key={file.id}>
                 {file.name}
                 <button onClick={() => handleDeleteFile(file.id)}>Delete File</button>
@@ -185,7 +200,7 @@ const AllUsers = () => {
             {users.map((user) => (
               <li key={user.id}>
                 {user.username}
-                <button onClick={() => handleViewUserFiles(user.id)}>View Files</button>
+                <button onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
                 <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
             ))}
@@ -222,18 +237,22 @@ const AllFiles = () => {
   const fetchFiles = async (sort='upload_date', filter=None) => {
     try {
       const filesData = await Api.getAllFiles();
-      setFiles(filesData);
-    } catch (error) {
-      console.error('Failed to get files:', error);
+      if (filesData.ok) {
+        setFiles(filesData.files);
+      }
+    } catch (e) {
+      console.error('Failed to get files:', e);
     }
   };
 
   const handleDeleteFile = async (fileId) => {
     try {
-      await Api.deleteFile(fileId);
-      fetchFiles(selectedSortField, selectedFilterField, filterValue);
-    } catch (error) {
-      console.error('Failed to delete file:', error);
+      const response = await Api.deleteFile(fileId);
+      if (response.ok) {
+        fetchFiles(selectedSortField, selectedFilterField, filterValue);
+      }
+    } catch (e) {
+      console.error('Failed to delete file:', e);
     }
   };
 

@@ -14,19 +14,23 @@ const FileList = () => {
 
   const fetchFiles = async () => {
     try {
-      const files = await Api.getFiles();
-      setFiles(files);
-    } catch (error) {
-      console.error(error);
+      const response = await Api.getFiles();
+      if (response.ok) {
+        setFiles(response.files);
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const handleDelete = async (fileId) => {
     try {
-      await Api.deleteFile(fileId);
-      fetchFiles();
-    } catch (error) {
-      console.error(error);
+      const response = await Api.deleteFile(fileId);
+      if (response.ok) {
+        fetchFiles();
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

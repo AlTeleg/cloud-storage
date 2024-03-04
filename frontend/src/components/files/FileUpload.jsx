@@ -22,11 +22,13 @@ const FileUpload = () => {
     formData.append('comment', comment);
 
     try {
-      await Api.uploadFile(formData);
-      setFile(null);
-      setComment(null);
-    } catch (error) {
-      console.error(error);
+      const response = await Api.uploadFile(formData);
+      if (response.ok) {
+        setFile(null);
+        setComment(null);
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

@@ -6,8 +6,8 @@ import store from '../../reducers/authReducer'
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleLogout = async () => {
     try {
@@ -17,10 +17,11 @@ const Logout = () => {
         store.dispatch({ type: 'LOGOUT' });
         setTimeout(() => {
             navigate('/');
-        }, 3000);
+        }, 2000);
       }
-    } catch (error) {
-      setError(error.response.data.message);
+    } catch (e) {
+      setError(e);
+      console.error(e);
     }
   };
 

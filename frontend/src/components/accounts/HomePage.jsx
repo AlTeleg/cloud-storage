@@ -14,10 +14,11 @@ const HomePage = () => {
     const fetchFiles = async () => {
       try {
         const response = await Api.getFiles();
-        const data = await response.json();
-        setFiles(data.files);
-      } catch (error) {
-        console.log(error);
+        if (response.ok) {
+          setFiles(response.files);
+        }
+      } catch (e) {
+        console.log(e);
       }
     };
 

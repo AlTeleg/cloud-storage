@@ -16,7 +16,9 @@ const FileDetails = ({ fileId }) => {
   const fetchFileDetails = async () => {
     try {
       const response = await Api.getFile(fileId);
-      setFile(response.data);
+      if (response.ok) {
+        setFile(response.file);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -24,10 +26,12 @@ const FileDetails = ({ fileId }) => {
 
   const handleDelete = async (fileId) => {
     try {
-      await Api.deleteFile(fileId);
-      navigate('/files/')
-    } catch (error) {
-      console.error(error);
+      const response = await Api.deleteFile(fileId);
+      if (response.ok) {
+        navigate('/files/')
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

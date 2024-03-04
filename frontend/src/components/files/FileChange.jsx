@@ -12,28 +12,34 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
 
   const handleRename = async () => {
     try {
-      await Api.renameFile(fileId, newName);
-      setName(newName);
-    } catch (error) {
-      console.error(error);
+      const response = await Api.renameFile(fileId, newName);
+      if (response.ok) {
+        setName(newName);
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const handleUpdateComment = async () => {
     try {
-      await Api.commentFile(fileId, newComment);
-      setComment(newComment);
-    } catch (error) {
-      console.error(error);
+      const response = await Api.commentFile(fileId, newComment);
+      if (response.ok) {
+        setComment(newComment);
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const handleDelete = async (fileId) => {
     try {
-      await Api.deleteFile(fileId);
-      navigate('/files/')
-    } catch (error) {
-      console.error(error);
+      const response = await Api.deleteFile(fileId);
+      if (response.ok) {
+        navigate('/files/')
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
