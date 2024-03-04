@@ -57,7 +57,7 @@ const RegistrationForm = () => {
 
     if (validateForm()) {
       try {
-        formData.delete('confirmPassword');
+        delete formData.confirmPassword;
         response = await Api.registerUser(formData);
         store.dispatch({ type: 'LOGIN' });
         navigate('/home');
