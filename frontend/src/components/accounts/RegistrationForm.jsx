@@ -8,7 +8,7 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
-    fullName: '',
+    full_name: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
         {errors.username && <p>{errors.username}</p>}
-        <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
+        <input type="text" name="fullName" placeholder="Full Name" value={formData.full_name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         {errors.email && <p>{errors.email}</p>}
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required/>
