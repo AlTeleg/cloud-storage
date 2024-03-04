@@ -4,61 +4,62 @@ import HOST from './config';
 class Api {
   constructor() {
     this.api = axios.create({
-      baseURL: HOST
+      baseURL: HOST,
+      withCredentials: true
     });
   }
 
   async loginUser(userData) {
     try {
       const response = await this.api.post('login/', userData);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async logoutUser() {
     try {
       const response = await this.api.post('logout/');
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async registerUser(userData) {
     try {
       const response = await this.api.post('register/', userData);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async deleteUser(userId) {
     try {
       const response = await this.api.delete(`admin/users/${userId}`);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async getFiles() {
     try {
       const response = await this.api.get('files/');
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async getFile(fileid) {
     try {
       const response = await this.api.get(`files/${fileid}`);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -69,18 +70,18 @@ class Api {
           'Content-Type': 'multipart/form-data'
         }
       });
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async deleteFile(fileId) {
     try {
       const response = await this.api.delete(`files/${fileId}/delete`);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -89,45 +90,45 @@ class Api {
       const response = await this.api.get(`files/${fileId}/download`, {
         responseType: 'blob',
       });
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async commentFile(fileId, newComment) {
     try {
       const response = await this.api.patch(`files/${fileId}/comment`, newComment);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async renameFile(fileId, newName) {
     try {
       const response = await this.api.patch(`files/${fileId}/rename`, newName);
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async getUsers() {
     try {
       const response = await this.api.get('admin/users/');
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async createUser() {
     try {
       const response = await this.api.post('admin/create-user/');
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -139,9 +140,9 @@ class Api {
           filter: filter
         }
       });
-      return response.data
-    } catch (e) {
-      console.error(e)
+      return response.data;
+    } catch (error) {
+      console.error(error)
     }
   }
 }
