@@ -20,7 +20,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await Api.loginUser(formData);
+      await Api.loginUser(formData);
       navigate('/files');
       store.dispatch({ type: 'LOGIN' });
     } catch (error) {

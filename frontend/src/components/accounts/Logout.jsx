@@ -11,7 +11,7 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      response = await Api.logoutUser();
+      const response = await Api.logoutUser();
       if (response.ok) {
         setLogoutMessage(message);
         store.dispatch({ type: 'LOGOUT' });

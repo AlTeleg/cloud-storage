@@ -47,6 +47,7 @@ const CreateUser = () => {
         },
       };
       await Api.createUser(userData);
+      navigate('/admin/all-users')
     } catch (error) {
       console.error('Failed to create user:', error);
     }
