@@ -3,6 +3,7 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import FileUpload from '../files/FileUpload';
 import FileList from '../files/FileList';
 import NavigationMenu from './NavigationMenu'
+import Api from '../../services/api';
 
 const HomePage = () => {
 
@@ -12,7 +13,7 @@ const HomePage = () => {
 
     const fetchFiles = async () => {
       try {
-        const response = await fetch('/api/files');
+        const response = await Api.getFiles();
         const data = await response.json();
         setFiles(data.files);
       } catch (error) {

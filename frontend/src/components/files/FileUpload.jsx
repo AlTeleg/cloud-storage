@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../../services/api';
+import Api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileUpload = () => {
@@ -22,7 +22,7 @@ const FileUpload = () => {
     formData.append('comment', comment);
 
     try {
-      await api.post('/files/upload', formData);
+      await Api.uploadFile(formData);
       setFile(null);
       setComment(null);
     } catch (error) {

@@ -13,18 +13,20 @@ import FileDetails from './components/files/FileDetails';
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/files" element={<FileList />} />
-        <Route path="/files/upload" element={<FileUpload />} />
-        <Route path="/files/:fileId" element={<FileDetails />} />
-        <Route path="/files/:fileId/download" element={<FileDownload />} />
-        <Route path="/files/:fileId/rename" element={<FileChange />} />
-        <Route path="/files/:fileId/comment" element={<FileChange />} />
-        <Route path="/admin/*" element={<AdminInterfaceWrapper />} />
-      </Routes>
+      <div className="app">
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/files" element={<FileList />} />
+          <Route path="/files/upload" element={<FileUpload />} />
+          <Route path="/files/:fileId" element={<FileDetails />} />
+          <Route path="/files/:fileId/download" element={<FileDownload />} />
+          <Route path="/files/:fileId/rename" element={<FileChange />} />
+          <Route path="/files/:fileId/comment" element={<FileChange />} />
+          <Route path="/admin/*" element={<AdminInterfaceWrapper />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

@@ -6,7 +6,7 @@ const NavigationMenu = () => {
   const isAuthenticated = useSelector(state => state.isAuthenticated);
 
   return (
-    <nav>
+    <nav className='nav-menu'>
       {isAuthenticated ? (
         <>
           <NavLink to="/logout">Logout</NavLink>

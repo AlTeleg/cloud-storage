@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
 import store from '../../reducers/authReducer'
 
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
     if (validateForm()) {
       try {
         formData.delete('confirmPassword');
-        response = await api.registerUser(formData);
+        response = await Api.registerUser(formData);
         store.dispatch({ type: 'LOGIN' });
         navigate('/home');
       } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import Api from '../../services/api';
 import fileImg from '../../img/file.png'
 import NavigationMenu from '../accounts/NavigationMenu'
 import { FileViewer } from 'react-file-viewer';
@@ -15,7 +15,7 @@ const FileDetails = ({ fileId }) => {
 
   const fetchFileDetails = async () => {
     try {
-      const response = await api.get(`/files/${fileId}`);
+      const response = await Api.getFile(fileId);
       setFile(response.data);
     } catch (error) {
       console.error(error);
@@ -24,7 +24,7 @@ const FileDetails = ({ fileId }) => {
 
   const handleDelete = async (fileId) => {
     try {
-      await deleteFile(fileId);
+      await Api.deleteFile(fileId);
       navigate('/files/')
     } catch (error) {
       console.error(error);

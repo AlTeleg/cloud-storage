@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import Api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu'
 
-const FileChange = ({ fileId, fileName, св  }) => {
+const FileChange = ({ fileId, fileName, fileComment}) => {
   const [newName, setNewName] = useState('');
   const [newComment, setNewComment] = useState('');
   const [name, setName] = useState(fileName);
-  const [сomment, setComment] = useState(fileComment);
+  const [comment, setComment] = useState(fileComment);
   const navigate = useNavigate();
 
   const handleRename = async () => {
     try {
-      await api.patch(`/files/${fileId}/rename`, { newName });
+      await Api.renameFile(fileId, newName);
       setName(newName);
     } catch (error) {
       console.error(error);
@@ -21,7 +21,7 @@ const FileChange = ({ fileId, fileName, св  }) => {
 
   const handleUpdateComment = async () => {
     try {
-      await api.patch(`/files/${fileId}/comment`, { newComment });
+      await Api.commentFile(fileId, newComment);
       setComment(newComment);
     } catch (error) {
       console.error(error);
@@ -30,7 +30,7 @@ const FileChange = ({ fileId, fileName, св  }) => {
 
   const handleDelete = async (fileId) => {
     try {
-      await deleteFile(fileId);
+      await Api.deleteFile(fileId);
       navigate('/files/')
     } catch (error) {
       console.error(error);

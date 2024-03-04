@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { logout } from '../../services/api';
+import Api from '../../services/api';
 import { useNavigate } from "react-router-dom";
 import NavigationMenu from './NavigationMenu'
 import store from '../../reducers/authReducer'
@@ -11,7 +11,7 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      response = await logout();
+      response = await Api.logoutUser();
       if (response.ok) {
         setLogoutMessage(message);
         store.dispatch({ type: 'LOGOUT' });

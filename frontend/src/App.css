@@ -33,3 +33,21 @@ button {
     margin-left: 50px;
 }
 
+.nav-menu {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu a {
+    margin-right: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    margin-bottom: 20px;
+}

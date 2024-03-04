@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, Route, Routes } from 'react-router-dom';
-import { deleteUser, deleteFile, createUser, getUsers, getAllFiles } from '../../services/api';
+import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
 
 const AdminInterface = () => {
@@ -46,7 +46,7 @@ const CreateUser = () => {
           is_superuser: IsSuperuser,
         },
       };
-      await createUser(userData);
+      await Api.createUser(userData);
     } catch (error) {
       console.error('Failed to create user:', error);
     }
@@ -107,7 +107,7 @@ const AllUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const usersData = await getUsers();
+      const usersData = await Api.getUsers();
       setUsers(usersData);
     } catch (error) {
       console.error('Failed to fetch users:', error);
@@ -116,7 +116,7 @@ const AllUsers = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await deleteUser(userId);
+      await Api.deleteUser(userId);
       fetchUsers();
     } catch (error) {
       console.error('Failed to delete user:', error);
@@ -125,31 +125,30 @@ const AllUsers = () => {
 
   const handleViewUserFiles = async (userId) => {
     try {
-      const userData = await getAllFiles(userId);
+      const userData = await Api.getAllFiles(userId);
       setSelectedUser(userData);
     } catch (error) {
       console.error('Failed to fetch user files:', error);
     }
   };
 
-  const handleDeleteFile = async (fileId) => {
-    try {
-      await deleteFile(fileId);
-      fetchFiles();
-    } catch (error) {
-      console.error('Failed to delete file:', error);
-    }
-  };
-
   const fetchFiles = async () => {
     try {
-      const filesData = await getAllFiles();
+      const filesData = await Api.getAllFiles();
       setFiles(filesData);
     } catch (error) {
       console.error('Failed to get files:', error);
     }
   };
 
+  const handleDeleteFile = async (fileId) => {
+    try {
+      await Api.deleteFile(fileId);
+      fetchFiles();
+    } catch (error) {
+      console.error('Failed to delete file:', error);
+    }
+  };
 
   const handleGoBack = () => {
     setSelectedUser(null);
@@ -221,7 +220,7 @@ const AllFiles = () => {
 
   const fetchFiles = async (sort='upload_date', filter=None) => {
     try {
-      const filesData = await getAllFiles();
+      const filesData = await Api.getAllFiles();
       setFiles(filesData);
     } catch (error) {
       console.error('Failed to get files:', error);
@@ -230,7 +229,7 @@ const AllFiles = () => {
 
   const handleDeleteFile = async (fileId) => {
     try {
-      await deleteFile(fileId);
+      await Api.deleteFile(fileId);
       fetchFiles(selectedSortField, selectedFilterField, filterValue);
     } catch (error) {
       console.error('Failed to delete file:', error);

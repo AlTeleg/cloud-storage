@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getFiles, deleteFile} from '../../services/api';
-import { Link, useNavigate } from 'react-router-dom';
+import Api from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
 import NavigationMenu from '../accounts/NavigationMenu'
 
@@ -14,7 +14,7 @@ const FileList = () => {
 
   const fetchFiles = async () => {
     try {
-      const files = await getFiles();
+      const files = await Api.getFiles();
       setFiles(files);
     } catch (error) {
       console.error(error);
@@ -23,7 +23,7 @@ const FileList = () => {
 
   const handleDelete = async (fileId) => {
     try {
-      await deleteFile(fileId);
+      await Api.deleteFile(fileId);
       fetchFiles();
     } catch (error) {
       console.error(error);
@@ -31,14 +31,14 @@ const FileList = () => {
   };
 
   const handleImageClick = (fileId) => {
-    navigate(`/files/${fileId}/download`, { fileId: fileId });
+    navigate(`/files/${fileId}/download`);
   };
 
   const handleFileClick = (fileId) => {
-    navigate(`/files/${fileId}/`, { fileId: fileId });
+    navigate(`/files/${fileId}/`);
   };
 
-  const handleRename = (fileId) => {
+  const handleRename = (fileId, fileName, fileComment) => {
     navigate(`/files/${fileId}/rename`,{
         fileName: fileName,
         fileComment: fileComment
@@ -59,7 +59,7 @@ const FileList = () => {
             />
             {file.name} ({file.size})
             <button onClick={() => handleFileClick(file.id)}>Open File Details</button>
-            <button onClick={() => handleRename(file.id)}>Rename</button>
+            <button onClick={() => handleRename(file.id, file.name, file.comment)}>Rename</button>
             <button onClick={() => handleDelete(file.id)}>Delete</button>
           </li>
         ))}
