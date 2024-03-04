@@ -10,7 +10,7 @@ class Api {
 
   async loginUser(userData) {
     try {
-      const response = await this.api.post('/login/', userData);
+      const response = await this.api.post('login/', userData);
       return response.data
     } catch (e) {
       console.error(e)
@@ -19,7 +19,7 @@ class Api {
 
   async logoutUser() {
     try {
-      const response = await this.api.post('/logout/');
+      const response = await this.api.post('logout/');
       return response.data
     } catch (e) {
       console.error(e)
@@ -28,7 +28,7 @@ class Api {
 
   async registerUser(userData) {
     try {
-      const response = await this.api.post('/register/', userData);
+      const response = await this.api.post('register/', userData);
       return response.data
     } catch (e) {
       console.error(e)
@@ -46,7 +46,7 @@ class Api {
 
   async getFiles() {
     try {
-      const response = await this.api.get('/files/');
+      const response = await this.api.get('files/');
       return response.data
     } catch (e) {
       console.error(e)
@@ -55,7 +55,7 @@ class Api {
 
   async getFile(fileid) {
     try {
-      const response = await this.api.get(`/files/${fileid}`);
+      const response = await this.api.get(`files/${fileid}`);
       return response.data
     } catch (e) {
       console.error(e)
@@ -64,7 +64,7 @@ class Api {
 
   async uploadFile(formData) {
     try {
-      const response = await this.api.post('/files/', formData, {
+      const response = await this.api.post('files/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -77,7 +77,7 @@ class Api {
 
   async deleteFile(fileId) {
     try {
-      const response = await this.api.delete(`/files/${fileId}/delete`);
+      const response = await this.api.delete(`files/${fileId}/delete`);
       return response.data
     } catch (e) {
       console.error(e)
@@ -86,7 +86,7 @@ class Api {
 
   async downloadFile(fileId) {
     try {
-      const response = await this.api.get(`/files/${fileId}/download`, {
+      const response = await this.api.get(`files/${fileId}/download`, {
         responseType: 'blob',
       });
       return response.data
@@ -97,7 +97,7 @@ class Api {
 
   async commentFile(fileId, newComment) {
     try {
-      const response = await this.api.patch(`/files/${fileId}/comment`, newComment);
+      const response = await this.api.patch(`files/${fileId}/comment`, newComment);
       return response.data
     } catch (e) {
       console.error(e)
@@ -106,7 +106,7 @@ class Api {
 
   async renameFile(fileId, newName) {
     try {
-      const response = await this.api.patch(`/files/${fileId}/rename`, newName);
+      const response = await this.api.patch(`files/${fileId}/rename`, newName);
       return response.data
     } catch (e) {
       console.error(e)
@@ -115,7 +115,7 @@ class Api {
 
   async getUsers() {
     try {
-      const response = await this.api.get('/admin/users/');
+      const response = await this.api.get('admin/users/');
       return response.data
     } catch (e) {
       console.error(e)
@@ -124,7 +124,7 @@ class Api {
 
   async createUser() {
     try {
-      const response = await this.api.post('/admin/create-user/');
+      const response = await this.api.post('admin/create-user/');
       return response.data
     } catch (e) {
       console.error(e)
@@ -133,7 +133,7 @@ class Api {
 
   async getAllFiles(sort = 'upload_date', filter = null) {
     try {
-      const response = await this.api.get('/admin/files/', {
+      const response = await this.api.get('admin/files/', {
         params: {
           sort: sort,
           filter: filter
