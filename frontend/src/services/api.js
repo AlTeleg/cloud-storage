@@ -11,14 +11,27 @@ class Api {
     });
   }
 
+  async getCsrfToken() {
+    return document.cookie
+      .split('; ')
+      .find((cookie) => cookie.startsWith('csrftoken='))
+      .split('=')[1];
+  }
+
   async loginUser(userData) {
     try {
-      const response = await this.api.post('login/', userData);
+      const csrfToken = await this.getCsrfToken();
+      const response = await this.api.post('login/', userData, {
+        headers: {
+          'X-CSRFToken': csrfToken
+        }
+      });
       return response.data;
     } catch (error) {
       console.error(error)
     }
   }
+
 
   async logoutUser() {
     try {
@@ -31,7 +44,12 @@ class Api {
 
   async registerUser(userData) {
     try {
-      const response = await this.api.post('register/', userData);
+      const csrfToken = await this.getCsrfToken();
+      const response = await this.api.post('register/', userData, {
+        headers: {
+          'X-CSRFToken': csrfToken
+        }
+      });
       return response.data;
     } catch (error) {
       console.error(error)
@@ -67,9 +85,11 @@ class Api {
 
   async uploadFile(formData) {
     try {
+      const csrfToken = await this.getCsrfToken();
       const response = await this.api.post('files/', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'X-CSRFToken': csrfToken
         }
       });
       return response.data;
@@ -125,9 +145,14 @@ class Api {
     }
   }
 
-  async createUser() {
+  async createUser(userData) {
     try {
-      const response = await this.api.post('admin/create-user/');
+      const csrfToken = await this.getCsrfToken();
+      const response = await this.api.post('admin/create-user/', userData , {
+        headers: {
+          'X-CSRFToken': csrfToken
+        }
+      });
       return response.data;
     } catch (error) {
       console.error(error)
