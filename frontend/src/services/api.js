@@ -3,11 +3,11 @@ import HOST from './config';
 
 class Api {
   constructor() {
-    axios.defaults.xsrfCookieName = 'csrftoken';
-    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
     this.api = axios.create({
       baseURL: HOST,
       withCredentials: true,
+      xsrfCookieName:'csrftoken',
+      xsrfHeaderName:'X-CSRFTOKEN'
     });
   }
 
