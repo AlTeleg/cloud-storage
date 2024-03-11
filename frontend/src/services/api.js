@@ -32,7 +32,11 @@ class Api {
 
   async registerUser(userData) {
     try {
-      const response = await this.api.post('register/', userData);
+      const response = await this.api.post('register/', userData, { 
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      });
       return response.data;
     } catch (error) {
       console.error(error)
