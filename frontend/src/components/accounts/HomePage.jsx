@@ -51,8 +51,8 @@ const HomePage = () => {
       </nav>
 
       <Routes>
-        <Route path="/upload-file" element={<FileUpload />} />
-        <Route path="/all-files" element={<FileList />} />
+        <Route path="/files/upload" element={<FileUpload />} />
+        <Route path="/files" element={<FileList />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
 
