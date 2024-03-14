@@ -59,7 +59,7 @@ const RegistrationForm = () => {
       try {
         delete formData.confirmPassword;
         const response = await Api.registerUser(formData);
-        if (response.ok) {
+        if (response.ok || response.status === 302) {
           store.dispatch({ type: 'LOGIN' });
           navigate('/home');
         }
