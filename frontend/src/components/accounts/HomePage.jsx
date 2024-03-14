@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import FileUpload from '../files/FileUpload';
 import FileList from '../files/FileList';
+import Logout from './Logout';
 import NavigationMenu from './NavigationMenu'
 import Api from '../../services/api';
 
