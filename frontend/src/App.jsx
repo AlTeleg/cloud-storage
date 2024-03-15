@@ -15,16 +15,16 @@ const App = () => {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationForm />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/files" element={<FileList />} />
-          <Route path="/files/upload" element={<FileUpload />} />
-          <Route path="/files/:fileId" element={<FileDetails />} />
-          <Route path="/files/:fileId/download" element={<FileDownload />} />
-          <Route path="/files/:fileId/rename" element={<FileChange />} />
-          <Route path="/files/:fileId/comment" element={<FileChange />} />
-          <Route path="/admin/*" element={<AdminInterfaceWrapper />} />
+          <Route path="/home" element={<HomePage />} name="home"/>
+          <Route path="/register" element={<RegistrationForm />} name="register"/>
+          <Route path="/login" element={<LoginForm />} name="login"/>
+          <Route path="/files" element={<FileList />} name="file-list"/>
+          <Route path="/files/upload" element={<FileUpload />} name="file-upload"/>
+          <Route path="/files/:fileId" element={<FileDetails />} name="file-details"/>
+          <Route path="/files/:fileId/download" element={<FileDownload />} name="file-download"/>
+          <Route path="/files/:fileId/rename" element={<FileChange />} name="file-change-rename"/>
+          <Route path="/files/:fileId/comment" element={<FileChange />} name="file-change-comment"/>
+          <Route path="/admin/*" element={<AdminInterfaceWrapper />} name="admin"/>
         </Routes>
       </div>
     </Router>

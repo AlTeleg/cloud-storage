@@ -39,7 +39,7 @@ const FileList = () => {
   };
 
   const handleFileClick = (fileId) => {
-    navigate(`/files/${fileId}/`);
+    navigate(`/files/${fileId}`);
   };
 
   const handleRename = (fileId, fileName, fileComment) => {

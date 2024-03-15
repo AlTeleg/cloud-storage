@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Routes, Route } from 'react-router-dom';
-import FileUpload from '../files/FileUpload';
-import FileList from '../files/FileList';
-import Logout from './Logout';
+import { NavLink } from 'react-router-dom';
 import NavigationMenu from './NavigationMenu'
 import Api from '../../services/api';
 
@@ -39,22 +36,16 @@ const HomePage = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/files/upload">Upload File</NavLink>
+            <NavLink to="file-upload">Upload File</NavLink>
           </li>
           <li>
-            <NavLink to="/files">All Files</NavLink>
+            <NavLink to="file-list">All Files</NavLink>
           </li>
           <li>
-            <NavLink to="/logout">Logout</NavLink>
+            <NavLink to="logout">Logout</NavLink>
           </li>
         </ul>
       </nav>
-
-      <Routes>
-        <Route path="/files/upload" element={<FileUpload />} />
-        <Route path="/files" element={<FileList />} />
-        <Route path="/logout" element={<Logout />} />
-      </Routes>
 
       <h2>Last Downloaded</h2>
       <ul>

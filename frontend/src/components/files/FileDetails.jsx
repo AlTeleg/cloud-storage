@@ -28,7 +28,7 @@ const FileDetails = ({ fileId }) => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.ok) {
-        navigate('/files/')
+        navigate('file-list')
       }
     } catch (error) {
       console.error(error);

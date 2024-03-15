@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu'
+import { useNavigate } from 'react-router-dom';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [comment, setComment] = useState(null);
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -26,6 +28,8 @@ const FileUpload = () => {
       if (response.ok) {
         setFile(null);
         setComment(null);
+        navigate('file-list')
+        
       }
     } catch (error) {
       console.error(error);

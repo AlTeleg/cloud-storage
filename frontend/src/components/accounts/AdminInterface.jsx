@@ -64,7 +64,7 @@ const CreateUser = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin/')
+    navigate('admin')
   };
 
   return (
@@ -171,7 +171,7 @@ const AllUsers = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin/')
+    navigate('admin')
   };
 
   return (
@@ -270,7 +270,7 @@ const AllFiles = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin/')
+    navigate('admin')
   };
 
 
@@ -295,7 +295,7 @@ const AllFiles = () => {
                         type="radio"
                         name="field"
                         value={option.value}
-                        checked={selectedField === option.value}
+                        checked={selectedSortField === option.value}
                          onChange={() => handleRadioSortChange(option.value)}
                     />
                     {option.label}
@@ -312,7 +312,7 @@ const AllFiles = () => {
                         type="checkbox"
                         name="filterField"
                         value={option.value}
-                        checked={selectedField === option.value}
+                        checked={selectedFilterField === option.value}
                         onChange={() => handleRadioFilterChange(option.value)}
                     />
                     {option.label}
