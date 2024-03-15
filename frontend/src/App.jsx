@@ -9,6 +9,7 @@ import FileChange from  './components/files/FileChange';
 import FileUpload from  './components/files/FileUpload';
 import FileDownload from  './components/files/FileDownload';
 import FileDetails from './components/files/FileDetails';
+import Logout from './components/accounts/Logout';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/home" element={<HomePage />} name="home"/>
           <Route path="/register" element={<RegistrationForm />} name="register"/>
           <Route path="/login" element={<LoginForm />} name="login"/>
+          <Route path="/logout" element={<Logout />} name="logout"/>
           <Route path="/files" element={<FileList />} name="file-list"/>
           <Route path="/files/upload" element={<FileUpload />} name="file-upload"/>
           <Route path="/files/:fileId" element={<FileDetails />} name="file-details"/>

@@ -61,7 +61,7 @@ const RegistrationForm = () => {
         const response = await Api.registerUser(formData);
         if (response.ok || response.status === 302) {
           store.dispatch({ type: 'LOGIN' });
-          navigate('/home');
+          navigate('home');
         }
       } catch (error) {
         console.error(error);

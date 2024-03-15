@@ -11,20 +11,20 @@ const AdminInterface = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/admin/create-user">Create User</Link>
+            <Link to="admin-create-user">Create User</Link>
           </li>
           <li>
-            <Link to="/admin/users">All Users</Link>
+            <Link to="admin-users">All Users</Link>
           </li>
           <li>
-            <Link to="/admin/files">All Files</Link>
+            <Link to="admin-files">All Files</Link>
           </li>
         </ul>
       </nav>
       <Routes>
-        <Route path="/admin/create-user" element={<CreateUser />} />
-        <Route path="/admin/users" element={<AllUsers />} />
-        <Route path="/admin/files" element={<AllFiles />} />
+        <Route path="/admin/create-user" element={<CreateUser />} name='admin-create-user'/>
+        <Route path="/admin/users" element={<AllUsers />} name='admin-users'/>
+        <Route path="/admin/files" element={<AllFiles />} name='admin-files'/>
       </Routes>
     </div>
   );
@@ -48,7 +48,7 @@ const CreateUser = () => {
       };
       const response = await Api.createUser(userData);
       if (response.ok) {
-        navigate('/admin/users')
+        navigate('admin-users')
       }
     } catch (e) {
       console.error('Failed to create user:', e);
