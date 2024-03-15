@@ -23,7 +23,7 @@ const LoginForm = () => {
       const response = await Api.loginUser(formData);
       if (response.ok) {
         store.dispatch({ type: 'LOGIN' });
-        navigate('/home/');
+        navigate('/home');
       }
     } catch (error) {
       setError(error);
