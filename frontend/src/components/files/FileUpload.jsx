@@ -42,6 +42,7 @@ const FileUpload = () => {
       <h2>Upload File</h2>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
+        <h4>Set file comment:</h4>
         <input type="text" onChange={handleCommentChange} value={comment}/>
         <button type="submit">Upload</button>
       </form>

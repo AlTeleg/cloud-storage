@@ -69,7 +69,7 @@ class Api {
   async uploadFile(formData) {
     try {
 
-      const response = await this.api.post('files/', formData);
+      const response = await this.api.post('files/upload', formData);
       return response.data;
     } catch (error) {
       console.error(error)
