@@ -17,7 +17,7 @@ const FileDownload = ({ fileId }) => {
         document.body.appendChild(link);
         link.click();
         link.remove();
-        navigate('file-list'); 
+        navigate('/files'); 
       }
     } catch (error) {
       console.error(error);

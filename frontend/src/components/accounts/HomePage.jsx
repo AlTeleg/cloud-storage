@@ -36,13 +36,13 @@ const HomePage = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="file-upload">Upload File</NavLink>
+            <NavLink to="/files/upload">Upload File</NavLink>
           </li>
           <li>
-            <NavLink to="file-list">All Files</NavLink>
+            <NavLink to="/files">All Files</NavLink>
           </li>
           <li>
-            <NavLink to="logout">Logout</NavLink>
+            <NavLink to="/logout">Logout</NavLink>
           </li>
         </ul>
       </nav>

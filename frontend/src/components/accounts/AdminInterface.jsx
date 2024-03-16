@@ -11,13 +11,13 @@ const AdminInterface = () => {
       <nav>
         <ul>
           <li>
-            <Link to="admin-create-user">Create User</Link>
+            <Link to="/admin/create-user">Create User</Link>
           </li>
           <li>
-            <Link to="admin-users">All Users</Link>
+            <Link to="/admin/users">All Users</Link>
           </li>
           <li>
-            <Link to="admin-files">All Files</Link>
+            <Link to="/admin/files">All Files</Link>
           </li>
         </ul>
       </nav>
@@ -48,7 +48,7 @@ const CreateUser = () => {
       };
       const response = await Api.createUser(userData);
       if (response.ok) {
-        navigate('admin-users')
+        navigate('/admin/users')
       }
     } catch (e) {
       console.error('Failed to create user:', e);
@@ -64,7 +64,7 @@ const CreateUser = () => {
   };
 
   const handleBackHome = () => {
-    navigate('admin')
+    navigate('/admin')
   };
 
   return (
@@ -171,7 +171,7 @@ const AllUsers = () => {
   };
 
   const handleBackHome = () => {
-    navigate('admin')
+    navigate('/admin')
   };
 
   return (
@@ -270,7 +270,7 @@ const AllFiles = () => {
   };
 
   const handleBackHome = () => {
-    navigate('admin')
+    navigate('/admin')
   };
 
 

@@ -36,7 +36,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.ok) {
-        navigate('file-list')
+        navigate('/files')
       }
     } catch (error) {
       console.error(error);

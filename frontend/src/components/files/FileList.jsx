@@ -63,7 +63,7 @@ const FileList = () => {
             />
             {file.name} ({file.size})
             <button onClick={() => handleFileClick(file.id)}>Open File Details</button>
-            <button onClick={() => handleRename(file.id, file.name, file.comment)}>Rename</button>
+            <button onClick={() => handleRename(file.id, file.name, file.comment)}>Change name and comment</button>
             <button onClick={() => handleDelete(file.id)}>Delete</button>
           </li>
         ))}

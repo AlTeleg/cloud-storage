@@ -28,7 +28,7 @@ const FileUpload = () => {
       if (response.ok) {
         setFile(null);
         setComment(null);
-        navigate('file-list')
+        navigate('/files')
         
       }
     } catch (error) {
