@@ -41,7 +41,7 @@ class Api {
 
   async deleteUser(userId) {
     try {
-      const response = await this.api.delete(`admin/users/${userId}`);
+      const response = await this.api.delete(`admin/users/${userId}/`);
       return response.data;
     } catch (error) {
       console.error(error)
@@ -59,7 +59,7 @@ class Api {
 
   async getFile(fileid) {
     try {
-      const response = await this.api.get(`files/${fileid}`);
+      const response = await this.api.get(`files/${fileid}/`);
       return response.data;
     } catch (error) {
       console.error(error)
@@ -69,7 +69,7 @@ class Api {
   async uploadFile(formData) {
     try {
 
-      const response = await this.api.post('files/upload', formData);
+      const response = await this.api.post('files/upload/', formData);
       return response.data;
     } catch (error) {
       console.error(error)
@@ -78,7 +78,7 @@ class Api {
 
   async deleteFile(fileId) {
     try {
-      const response = await this.api.delete(`files/${fileId}/delete`);
+      const response = await this.api.delete(`files/${fileId}/delete/`);
       return response.data;
     } catch (error) {
       console.error(error)
@@ -87,7 +87,7 @@ class Api {
 
   async downloadFile(fileId) {
     try {
-      const response = await this.api.get(`files/${fileId}/download`, {
+      const response = await this.api.get(`files/${fileId}/download/`, {
         responseType: 'blob',
       });
       return response.data;
@@ -98,7 +98,7 @@ class Api {
 
   async commentFile(fileId, newComment) {
     try {
-      const response = await this.api.patch(`files/${fileId}/comment`, newComment);
+      const response = await this.api.patch(`files/${fileId}/comment/`, newComment);
       return response.data;
     } catch (error) {
       console.error(error)
@@ -107,7 +107,7 @@ class Api {
 
   async renameFile(fileId, newName) {
     try {
-      const response = await this.api.patch(`files/${fileId}/rename`, newName);
+      const response = await this.api.patch(`files/${fileId}/rename/`, newName);
       return response.data;
     } catch (error) {
       console.error(error)
