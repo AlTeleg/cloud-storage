@@ -29,7 +29,7 @@ const HomePage = () => {
   const lastDownloadedFiles = sortedFiles.slice(0, 5);
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h1>Welcome to Your Storage</h1>
 
@@ -55,7 +55,7 @@ const HomePage = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

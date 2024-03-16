@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
-import fileImg from '../../img/file.png'
-import NavigationMenu from '../accounts/NavigationMenu'
-import { FileViewer } from 'react-file-viewer';
+import fileImg from '../../img/file.png';
+import NavigationMenu from '../accounts/NavigationMenu';
+import FileViewer from 'react-file-viewer';
 
 const FileDetails = ({ fileId }) => {
   const [file, setFile] = useState(null);
@@ -43,10 +43,10 @@ const FileDetails = ({ fileId }) => {
   const mediaTypes = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'];
 
   return (
-    <div>
+    <>
       <NavigationMenu />
       {mediaTypes.includes(fileExtension) ? (
-        <FileViewer fileType={fileExtension} filePath={file.path} />
+        <FileViewer fileType={fileExtension} fileData={file.data} />
       ) : (
         <img src={fileImg} alt="File" />
       )}
@@ -61,7 +61,7 @@ const FileDetails = ({ fileId }) => {
       <hr />
       <p>Special download link: {window.location.host}{file.special_link}</p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
-    </div>
+    </>
   );
 };
 

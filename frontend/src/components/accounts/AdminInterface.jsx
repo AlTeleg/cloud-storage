@@ -5,7 +5,7 @@ import NavigationMenu from './NavigationMenu'
 
 const AdminInterface = () => {
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h2>Admin Interface</h2>
       <nav>
@@ -26,7 +26,7 @@ const AdminInterface = () => {
         <Route path="/admin/users" element={<AllUsers />} name='admin-users'/>
         <Route path="/admin/files" element={<AllFiles />} name='admin-files'/>
       </Routes>
-    </div>
+    </>
   );
 };
 
@@ -175,7 +175,7 @@ const AllUsers = () => {
   };
 
   return (
-    <div>
+    <>
       {selectedUser ? (
         <div>
           <h3>
@@ -209,7 +209,7 @@ const AllUsers = () => {
       )}
       <hr />
       <button onClick={handleBackHome}>Back to home</button>
-    </div>
+    </>
   );
 };
 
@@ -275,7 +275,7 @@ const AllFiles = () => {
 
 
   return (
-    <div>
+    <>
       <h3>{h3Option}</h3>
 
       <ul>
@@ -331,7 +331,7 @@ const AllFiles = () => {
       <button onClick={handleApplyFilterAndSort}>Apply Filter and Sort</button>
       <hr />
        <button onClick={handleBackHome}>Back to home</button>
-    </div>
+    </>
   );
 };
 

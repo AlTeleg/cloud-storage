@@ -37,7 +37,7 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h2>Upload File</h2>
       <form onSubmit={handleSubmit}>
@@ -46,7 +46,7 @@ const FileUpload = () => {
         <input type="text" onChange={handleCommentChange} value={comment}/>
         <button type="submit">Upload</button>
       </form>
-    </div>
+    </>
   );
 };
 

@@ -44,7 +44,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h4>Actions for file: {name}</h4>
       <input
@@ -65,7 +65,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
       <button onClick={handleUpdateComment}>Update Comment</button>
 
       <button onClick={() => handleDelete(file.id)}>Delete</button>
-    </div>
+    </>
   );
 };
 

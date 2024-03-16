@@ -61,7 +61,7 @@ const RegistrationForm = () => {
         const response = await Api.registerUser(formData);
         if (response.ok || response.status === 302) {
           store.dispatch({ type: 'LOGIN' });
-          navigate('/home');
+          navigate('/home/');
         }
       } catch (error) {
         console.error(error);
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h2>Registration Form</h2>
       <form onSubmit={handleSubmit}>
@@ -85,7 +85,7 @@ const RegistrationForm = () => {
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Register</button>
       </form>
-    </div>
+    </>
   );
 }
 

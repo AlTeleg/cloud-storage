@@ -26,14 +26,14 @@ const Logout = () => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       {logoutMessage && <p>{logoutMessage}</p>}
       {error && <p>{error}</p>}
       <hr/ >
       <p>Are you sure you want to logout from your storage?</p>
       <button onClick={handleLogout}>Confirm</button>
-    </div>
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ const FileList = () => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h2>Files</h2>
       <ul>
@@ -68,7 +68,7 @@ const FileList = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

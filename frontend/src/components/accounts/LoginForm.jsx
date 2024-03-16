@@ -32,7 +32,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <>
       <NavigationMenu/ >
       <h2>Login Form</h2>
       <form onSubmit={handleSubmit}>
@@ -41,7 +41,7 @@ const LoginForm = () => {
         {error && <p>{error}</p>}
         <button type="submit">Login</button>
       </form>
-    </div>
+    </>
   );
 }
 
