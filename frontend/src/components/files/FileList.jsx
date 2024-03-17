@@ -53,6 +53,9 @@ const FileList = () => {
     <>
       <NavigationMenu/ >
       <h2>Files</h2>
+      {files.length === 0 ? (
+      <p>File list is empty</p>
+      ) : (
       <ul>
         {files.map((file) => (
           <li key={file.id}>
@@ -68,6 +71,7 @@ const FileList = () => {
           </li>
         ))}
       </ul>
+      )}
     </>
   );
 };
