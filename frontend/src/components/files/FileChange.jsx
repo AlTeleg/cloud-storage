@@ -13,7 +13,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
   const handleRename = async () => {
     try {
       const response = await Api.renameFile(fileId, newName);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setName(newName);
       }
     } catch (error) {
@@ -24,7 +24,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
   const handleUpdateComment = async () => {
     try {
       const response = await Api.commentFile(fileId, newComment);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setComment(newComment);
       }
     } catch (error) {
@@ -35,7 +35,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
   const handleDelete = async (fileId) => {
     try {
       const response = await Api.deleteFile(fileId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         navigate('/files')
       }
     } catch (error) {

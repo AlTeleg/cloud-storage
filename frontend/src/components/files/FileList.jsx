@@ -15,7 +15,7 @@ const FileList = () => {
   const fetchFiles = async () => {
     try {
       const response = await Api.getFiles();
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setFiles(response.data.files);
       }
     } catch (error) {
@@ -26,7 +26,7 @@ const FileList = () => {
   const handleDelete = async (fileId) => {
     try {
       const response = await Api.deleteFile(fileId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         fetchFiles();
       }
     } catch (error) {

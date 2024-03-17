@@ -21,7 +21,7 @@ const LoginForm = () => {
 
     try {
       const response = await Api.loginUser(formData);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         store.dispatch({ type: 'LOGIN' });
         navigate('/home');
       }

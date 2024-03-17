@@ -47,7 +47,7 @@ const CreateUser = () => {
         },
       };
       const response = await Api.createUser(userData);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         navigate('/admin/users')
       }
     } catch (e) {
@@ -112,7 +112,7 @@ const AllUsers = () => {
   const fetchUsers = async () => {
     try {
       const response = await Api.getUsers();
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setUsers(response.data.users);
       }
     } catch (error) {
@@ -123,7 +123,7 @@ const AllUsers = () => {
   const handleDeleteUser = async (userId) => {
     try {
       const response = await Api.deleteUser(userId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         fetchUsers();
       }
     } catch (error) {
@@ -134,7 +134,7 @@ const AllUsers = () => {
   const handleViewUserFiles = async (userId, username) => {
     try {
       const response = await Api.getAllFiles(filter=userId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setSelectedUserFiles(response.data.files);
         setSelectedUser(username);
       }
@@ -146,7 +146,7 @@ const AllUsers = () => {
   const fetchFiles = async () => {
     try {
       const response = await Api.getAllFiles();
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setFiles(response.data.files);
       }
     } catch (error) {
@@ -157,7 +157,7 @@ const AllUsers = () => {
   const handleDeleteFile = async (fileId) => {
     try {
       const response = await Api.deleteFile(fileId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         fetchFiles();
       }
     } catch (error) {
@@ -237,7 +237,7 @@ const AllFiles = () => {
   const fetchFiles = async (sort='upload_date', filter=None) => {
     try {
       const response = await Api.getAllFiles();
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setFiles(response.data.files);
       }
     } catch (e) {
@@ -248,7 +248,7 @@ const AllFiles = () => {
   const handleDeleteFile = async (fileId) => {
     try {
       const response = await Api.deleteFile(fileId);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         fetchFiles(selectedSortField, selectedFilterField, filterValue);
       }
     } catch (e) {

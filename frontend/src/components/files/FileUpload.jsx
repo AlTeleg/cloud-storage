@@ -25,7 +25,7 @@ const FileUpload = () => {
 
     try {
       const response = await Api.uploadFile(formData);
-      if (response.ok) {
+      if (response.statusText === "OK") {
         setFile(null);
         setComment(null);
         navigate('/files')

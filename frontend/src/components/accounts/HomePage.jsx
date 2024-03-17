@@ -12,7 +12,7 @@ const HomePage = () => {
     const fetchFiles = async () => {
       try {
         const response = await Api.getFiles();
-        if (response.ok) {
+        if (response.statusText === "OK") {
           setFiles(response.data.files);
         }
       } catch (error) {
