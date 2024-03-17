@@ -16,8 +16,10 @@ const FileList = () => {
     try {
       const response = await Api.getFiles();
       if (response.statusText === "OK") {
+        console.log(files)
         console.log(window.files);
-        setFilesShown(JSON.parse(window.files));
+        console.log(response.data)
+        setFilesShown(response.data.files);
       }
     } catch (error) {
       console.error(error);
@@ -52,7 +54,7 @@ const FileList = () => {
 
   return (
     <>
-      <NavigationMenu/ >
+      <NavigationMenu />
       <h2>Files</h2>
       {filesShown.length === 0 ? (
       <p>File list is empty</p>

@@ -71,7 +71,7 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <NavigationMenu/ >
+      <NavigationMenu />
       <h2>Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />

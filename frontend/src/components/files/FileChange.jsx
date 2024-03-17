@@ -45,7 +45,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
 
   return (
     <>
-      <NavigationMenu/ >
+      <NavigationMenu />
       <h4>Actions for file: {name}</h4>
       <input
         type="text"

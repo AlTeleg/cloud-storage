@@ -32,7 +32,7 @@ const HomePage = () => {
 
   return (
     <>
-      <NavigationMenu/ >
+      <NavigationMenu />
       <h1>Welcome to Your Storage</h1>
 
       <nav>
