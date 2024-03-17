@@ -14,6 +14,9 @@ const FileList = () => {
         await new Promise((resolve) =>
           window.addEventListener('DOMContentLoaded', resolve)
         );
+        console.log(window.files)
+        console.log(files)
+        console.log(JSON.parse(window.files))
         setFilesShown(JSON.parse(window.files));
       } catch (error) {
         console.error(error);
