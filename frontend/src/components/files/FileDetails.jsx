@@ -17,7 +17,7 @@ const FileDetails = ({ fileId }) => {
     try {
       const response = await Api.getFile(fileId);
       if (response.ok) {
-        setFile(response.file);
+        setFile(response.data.file);
       }
     } catch (error) {
       console.error(error);

@@ -8,16 +8,20 @@ const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-
+  const defaultMessage = 'Are you sure you want to logout from your storage?';
+  const [message, setMessage] = useState(defaultMessage)
+  
   const handleLogout = async () => {
     try {
       const response = await Api.logoutUser();
       if (response.ok) {
         setLogoutMessage(message);
         store.dispatch({ type: 'LOGOUT' });
+        setMessage('Good bye! Have a nice day!')
         setTimeout(() => {
+            setMessage(defaultMessage)
             navigate('/');
-        }, 2000);
+        }, 1500);
       }
     } catch (e) {
       setError(e);
@@ -31,7 +35,7 @@ const Logout = () => {
       {logoutMessage && <p>{logoutMessage}</p>}
       {error && <p>{error}</p>}
       <hr/ >
-      <p>Are you sure you want to logout from your storage?</p>
+      <p>{message}</p>
       <button onClick={handleLogout}>Confirm</button>
     </>
   );

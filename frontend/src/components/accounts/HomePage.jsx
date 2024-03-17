@@ -13,7 +13,7 @@ const HomePage = () => {
       try {
         const response = await Api.getFiles();
         if (response.ok) {
-          setFiles(response.files);
+          setFiles(response.data.files);
         }
       } catch (error) {
         console.error(error);

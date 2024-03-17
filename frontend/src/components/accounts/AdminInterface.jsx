@@ -113,7 +113,7 @@ const AllUsers = () => {
     try {
       const response = await Api.getUsers();
       if (response.ok) {
-        setUsers(response.users);
+        setUsers(response.data.users);
       }
     } catch (error) {
       console.error('Failed to fetch users:', error);
@@ -135,7 +135,7 @@ const AllUsers = () => {
     try {
       const response = await Api.getAllFiles(filter=userId);
       if (response.ok) {
-        setSelectedUserFiles(response.files);
+        setSelectedUserFiles(response.data.files);
         setSelectedUser(username);
       }
     } catch (error) {
@@ -147,7 +147,7 @@ const AllUsers = () => {
     try {
       const response = await Api.getAllFiles();
       if (response.ok) {
-        setFiles(response.files);
+        setFiles(response.data.files);
       }
     } catch (error) {
       console.error('Failed to get files:', error);
@@ -236,9 +236,9 @@ const AllFiles = () => {
 
   const fetchFiles = async (sort='upload_date', filter=None) => {
     try {
-      const filesData = await Api.getAllFiles();
-      if (filesData.ok) {
-        setFiles(filesData.files);
+      const response = await Api.getAllFiles();
+      if (response.ok) {
+        setFiles(response.data.files);
       }
     } catch (e) {
       console.error('Failed to get files:', e);

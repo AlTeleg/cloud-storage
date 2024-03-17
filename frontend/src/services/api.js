@@ -14,7 +14,7 @@ class Api {
   async loginUser(userData) {
     try {
       const response = await this.api.post('login/', userData);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -24,7 +24,7 @@ class Api {
   async logoutUser() {
     try {
       const response = await this.api.post('logout/');
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -33,7 +33,7 @@ class Api {
   async registerUser(userData) {
     try {
       const response = await this.api.post('register/', userData);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -42,7 +42,7 @@ class Api {
   async deleteUser(userId) {
     try {
       const response = await this.api.delete(`admin/users/${userId}/`);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -51,7 +51,7 @@ class Api {
   async getFiles() {
     try {
       const response = await this.api.get('files/');
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -60,7 +60,7 @@ class Api {
   async getFile(fileid) {
     try {
       const response = await this.api.get(`files/${fileid}/`);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -70,7 +70,7 @@ class Api {
     try {
 
       const response = await this.api.post('files/upload/', formData);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -79,7 +79,7 @@ class Api {
   async deleteFile(fileId) {
     try {
       const response = await this.api.delete(`files/${fileId}/delete/`);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -90,7 +90,7 @@ class Api {
       const response = await this.api.get(`files/${fileId}/download/`, {
         responseType: 'blob',
       });
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -99,7 +99,7 @@ class Api {
   async commentFile(fileId, newComment) {
     try {
       const response = await this.api.patch(`files/${fileId}/comment/`, newComment);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -108,7 +108,7 @@ class Api {
   async renameFile(fileId, newName) {
     try {
       const response = await this.api.patch(`files/${fileId}/rename/`, newName);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -117,7 +117,7 @@ class Api {
   async getUsers() {
     try {
       const response = await this.api.get('admin/users/');
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -126,7 +126,7 @@ class Api {
   async createUser(userData) {
     try {
       const response = await this.api.post('admin/create-user/', userData);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
@@ -140,7 +140,7 @@ class Api {
           filter: filter
         }
       });
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error)
     }
