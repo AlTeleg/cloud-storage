@@ -13,7 +13,9 @@ const HomePage = () => {
       try {
         const response = await Api.getFiles();
         if (response.statusText === "OK") {
-          setFiles(response.data.files);
+          if (response.data.files) {
+            setFiles(response.data.files);
+          }
         }
       } catch (error) {
         console.error(error);

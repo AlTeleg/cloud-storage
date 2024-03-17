@@ -113,7 +113,9 @@ const AllUsers = () => {
     try {
       const response = await Api.getUsers();
       if (response.statusText === "OK") {
-        setUsers(response.data.users);
+        if (response.data.users) {
+          setUsers(response.data.users);
+        }
       }
     } catch (error) {
       console.error('Failed to fetch users:', error);
@@ -135,8 +137,10 @@ const AllUsers = () => {
     try {
       const response = await Api.getAllFiles(filter=userId);
       if (response.statusText === "OK") {
-        setSelectedUserFiles(response.data.files);
         setSelectedUser(username);
+        if (response.data.files) {
+          setSelectedUserFiles(response.data.files);
+        }
       }
     } catch (error) {
       console.error('Failed to fetch user files:', error);
@@ -147,7 +151,9 @@ const AllUsers = () => {
     try {
       const response = await Api.getAllFiles();
       if (response.statusText === "OK") {
-        setFiles(response.data.files);
+        if (response.data.files) {
+          setFiles(response.data.files);
+        }
       }
     } catch (error) {
       console.error('Failed to get files:', error);
@@ -238,7 +244,9 @@ const AllFiles = () => {
     try {
       const response = await Api.getAllFiles();
       if (response.statusText === "OK") {
-        setFiles(response.data.files);
+        if (response.data.files) {
+          setFiles(response.data.files);
+        }
       }
     } catch (e) {
       console.error('Failed to get files:', e);
