@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
 import NavigationMenu from '../accounts/NavigationMenu'
 
-const FileList = () => {
-  const [files, setFiles] = useState([]);
+const FileList = ({ files }) => {
+  const [filesShown, setFilesShown] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,12 +16,7 @@ const FileList = () => {
     try {
       const response = await Api.getFiles();
       if (response.statusText === "OK") {
-        console.log(response)
-        console.log(response.data)
-        if (response.data.files) {
-          console.log(response.data.files)
-          setFiles(response.data.files);
-        }
+        setFilesShown(files);
       }
     } catch (error) {
       console.error(error);
@@ -58,11 +53,11 @@ const FileList = () => {
     <>
       <NavigationMenu/ >
       <h2>Files</h2>
-      {files.length === 0 ? (
+      {filesShown.length === 0 ? (
       <p>File list is empty</p>
       ) : (
       <ul>
-        {files.map((file) => (
+        {filesShown.map((file) => (
           <li key={file.id}>
             <img
               src={fileImage}
