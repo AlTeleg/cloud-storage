@@ -17,6 +17,10 @@ const FileList = () => {
       const response = await Api.getFiles();
       if (response.statusText === "OK") {
         setFilesShown(window.files);
+        console.log(filesShown)
+        if (files) {
+          console.log(files)
+        }
       }
     } catch (error) {
       console.error(error);
