@@ -12,11 +12,11 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
     <script type="text/javascript">
       var files = '{{ files | default:"null" | safe }}';
       var file = '{{ file | default:"null" | safe }}';
       var users = '{{ users | default:"null" | safe }}';
     </script>
+    <div id="root"></div>
   </body>
 </html>
