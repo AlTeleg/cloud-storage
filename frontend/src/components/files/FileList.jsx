@@ -13,8 +13,8 @@ const FileList = () => {
       console.log(context.files)
       setFilesShown(JSON.parse(context.files));
     }
-    if (windows.context.files) {
-      console.log(windows.context.files)
+    if (window.context.files) {
+      console.log(window.context.files)
       setFilesShown(JSON.parse(context.files));
     }
   }, []);
