@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
-import store from '../../reducers/store'
+import { login } from '../../reducers/auth.js';
+import { useDispatch } from 'react-redux';
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const RegistrationForm = () => {
     confirmPassword: ''
   });
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -60,7 +62,7 @@ const RegistrationForm = () => {
         delete formData.confirmPassword;
         const response = await Api.registerUser(formData);
         if (response.statusText === "OK") {
-          store.dispatch({ type: 'LOGIN' });
+          dispatch(login());
           navigate('/home/');
         }
       } catch (error) {
