@@ -4,15 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
 import NavigationMenu from '../accounts/NavigationMenu'
 
-const FileList = ({ files }) => {
+const FileList = () => {
   const [filesShown, setFilesShown] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(files)
-    console.log(window.files)
-    setFilesShown(files);
-  }, [files]);
+    setFilesShown(window.files);
+  }, [window.files]);
 
   const handleDelete = async (fileId) => {
     try {
