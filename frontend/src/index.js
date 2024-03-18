@@ -8,7 +8,7 @@ import store from './reducers/authReducer.js';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App files={files} users={users} file={file}/>
   </Provider>,
   document.getElementById('root')
 );

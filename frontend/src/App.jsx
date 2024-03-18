@@ -20,9 +20,9 @@ const App = () => {
           <Route path="/register" element={<RegistrationForm />} name="register"/>
           <Route path="/login" element={<LoginForm />} name="login"/>
           <Route path="/logout" element={<Logout />} name="logout"/>
-          <Route path="/files" element={<FileList />} name="file-list" files={files}/>
+          <Route path="/files" element={<FileList />} name="file-list" files={this.props.files}/>
           <Route path="/files/upload" element={<FileUpload />} name="file-upload"/>
-          <Route path="/files/:fileId" element={<FileDetails />} name="file-details" file={file}/>
+          <Route path="/files/:fileId" element={<FileDetails />} name="file-details" file={this.props.file}/>
           <Route path="/files/:fileId/download" element={<FileDownload />} name="file-download"/>
           <Route path="/files/:fileId/rename" element={<FileChange />} name="file-change-rename"/>
           <Route path="/files/:fileId/comment" element={<FileChange />} name="file-change-comment"/>
