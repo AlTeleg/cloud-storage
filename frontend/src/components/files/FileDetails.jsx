@@ -48,7 +48,6 @@ const FileDetails = () => {
 
   return (
     <>
-      <NavigationMenu />
       {mediaTypes.includes(fileExtension) ? (
         <FileViewer fileType={fileExtension} fileData={file.data} />
       ) : (

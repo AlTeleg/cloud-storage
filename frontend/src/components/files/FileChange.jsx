@@ -49,7 +49,6 @@ const FileChange = () => {
 
   return (
     <>
-      <NavigationMenu />
       <h4>Actions for file: {name}</h4>
       <input
         type="text"

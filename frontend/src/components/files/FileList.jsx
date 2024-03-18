@@ -53,7 +53,6 @@ const FileList = () => {
 
   return (
     <>
-      <NavigationMenu />
       <h2>Files</h2>
       {filesShown.length === 0 ? (
       <p>File list is empty</p>

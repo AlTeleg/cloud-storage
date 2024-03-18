@@ -28,7 +28,6 @@ const FileDownload = () => {
 
   return (
     <>
-      <NavigationMenu />
       <h2>Download File - id: {fileId}</h2>
       <button onClick={downloadFile}>Download</button>
     </>

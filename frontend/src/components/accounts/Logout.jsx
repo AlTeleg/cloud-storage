@@ -33,7 +33,6 @@ const Logout = () => {
 
   return (
     <>
-      <NavigationMenu />
       {logoutMessage && <p>{logoutMessage}</p>}
       {error && <p>{error}</p>}
       <hr/ >
