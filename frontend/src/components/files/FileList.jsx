@@ -9,14 +9,17 @@ const FileList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData();
+
+    fetchFilesData();
+
   }, []);
 
-  const fetchData = async () => {
+  const fetchFilesData = async () => {
     try {
-      const response = await Api.getFiles();
-      const data = await response.json();
-      setFilesShown(data.files);
+      if (window.files && window.files.length > 0) {
+        console.log('Files found')
+        setFilesShown(window.files);
+      }
     } catch (error) {
       console.error(error);
     }

@@ -15,10 +15,8 @@ const FileDetails = () => {
     const fetchFileDetails = async () => {
       try {
         if (window.file) {
-            setFile(window.file);
-        } else {
-          console.log("fetchFileDetails")
-          setTimeout(fetchFileDetails, 1000)
+          console.log('File found');
+          setFile(window.file);
         }
       } catch (error) {
         console.error(error);
