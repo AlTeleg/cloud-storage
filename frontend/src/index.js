@@ -4,6 +4,7 @@ import './index.css';
 import './App.css';
 import App from './App.jsx';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './reducers/store.js';
 
 ReactDOM.render(
