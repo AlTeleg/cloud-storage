@@ -9,14 +9,9 @@ const FileList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (context.files) {
-      console.log(context.files)
-      setFilesShown(JSON.parse(context.files));
-    }
-    if (window.context.files) {
-      console.log(window.context.files)
-      setFilesShown(JSON.parse(context.files));
-    }
+    const context = JSON.parse(document.getElementById('context').textContent);
+    console.log(context.files);
+    setFilesShown(JSON.parse(context.files));
   }, []);
 
   const handleDelete = async (fileId) => {
