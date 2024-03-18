@@ -12,13 +12,11 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="context"></div>
     <script type="text/javascript">
-      var context = {
-        files:'{{ files | default:"null" | safe }}',
-        file:'{{ file | default:"null" | safe }}',
-        users:'{{ users | default:"null" | safe }}'
-      };
-      document.getElementById('context').textContent = JSON.stringify(context);
+      var files =  JSON.parse('{{ files | default:"[]" | safe }}');
+      var file =  JSON.parse('{{ file | default:"null" | safe }}');
+      var users =  JSON.parse('{{ users | default:"[]" | safe }}');
     </script>
     <div id="root"></div>
   </body>

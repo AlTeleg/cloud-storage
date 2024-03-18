@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/register" element={<RegistrationForm />} name="register"/>
           <Route path="/login" element={<LoginForm />} name="login"/>
           <Route path="/logout" element={<Logout />} name="logout"/>
-          <Route path="/files" element={<FileList />} name="file-list" files="files"/>
+          <Route path="/files" element={<FileList />} name="file-list" files={files}/>
           <Route path="/files/upload" element={<FileUpload />} name="file-upload"/>
           <Route path="/files/:fileId" element={<FileDetails />} name="file-details"/>
           <Route path="/files/:fileId/download" element={<FileDownload />} name="file-download"/>
