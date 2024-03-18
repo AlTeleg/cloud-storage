@@ -10,7 +10,7 @@ import store, { persistor } from './reducers/store.js';
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-    <App />
+      <App />
     </PersistGate>
   </Provider>,
   document.getElementById('root')
