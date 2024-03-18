@@ -9,8 +9,16 @@ const FileList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setFilesShown(window.files);
-  }, [window.files]);
+    const fetchData = () => {
+      if (window.files) {
+        setFilesShown(window.files);
+      } else {
+        setTimeout(fetchData, 100);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   const handleDelete = async (fileId) => {
     try {
