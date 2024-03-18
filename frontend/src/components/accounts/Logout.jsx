@@ -3,13 +3,15 @@ import Api from '../../services/api';
 import { useNavigate } from "react-router-dom";
 import NavigationMenu from './NavigationMenu'
 import { logout } from '../../reducers/auth.js';
+import { useDispatch } from 'react-redux';
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const defaultMessage = 'Are you sure you want to logout from your storage?';
-  const [message, setMessage] = useState(defaultMessage)
+  const [message, setMessage] = useState(defaultMessage);
+  const dispatch = useDispatch();
   
   const handleLogout = async () => {
     try {

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
 import { login } from '../../reducers/auth.js';
+import { useDispatch } from 'react-redux';
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const LoginForm = () => {
     password: ''
   });
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
