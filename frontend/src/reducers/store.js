@@ -8,7 +8,7 @@ const persistedReducer = persistReducer(persistConfig, auth.reducer);
 
 const store = configureStore({
   reducer: {
-    "auth": persistedReducer
+    auth: persistedReducer
   }
 })
 
