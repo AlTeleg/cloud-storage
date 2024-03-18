@@ -8,25 +8,25 @@ const FileList = () => {
   const [filesShown, setFilesShown] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     console.log("interval enter")
-  //     if (window.files && window.files.length > 0) {
-  //       setFilesShown(window.files);
-  //       clearInterval(interval); 
-  //     }
-  //   }, 500);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  //   return () => {
-  //     clearInterval(interval); 
-  //   };
-  // }, []);
+  const fetchData = async () => {
+    try {
+      const response = await Api.getFiles();
+      const data = await response.json();
+      setFilesShown(data.files);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleDelete = async (fileId) => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
-        navigate('/files')
+        fetchData();
       }
     } catch (error) {
       console.error(error);
@@ -52,11 +52,11 @@ const FileList = () => {
     <>
       <NavigationMenu />
       <h2>Files</h2>
-      {this.props.files.length === 0 ? (
+      {filesShown.length === 0 ? (
       <p>File list is empty</p>
       ) : (
       <ul>
-        {this.props.files.map((file) => (
+        {filesShown.map((file) => (
           <li key={file.id}>
             <img
               src={fileImage}
