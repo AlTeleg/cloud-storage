@@ -13,9 +13,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
-      var files = '{{ files | default:"null" | safe }}';
-      var file = '{{ file | default:"null" | safe }}';
-      var users = '{{ users | default:"null" | safe }}';
+      var context = {
+        files:'{{ files | default:"null" | safe }}',
+        file:'{{ file | default:"null" | safe }}',
+        users:'{{ users | default:"null" | safe }}'
+      };
     </script>
     <div id="root"></div>
   </body>
