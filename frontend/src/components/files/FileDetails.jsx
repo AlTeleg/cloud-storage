@@ -15,7 +15,7 @@ const FileDetails = () => {
     const fetchFileDetails = async () => {
       try {
         if (window.file) {
-            setFile(window.file);
+            setFile({ "file": window.file });
         } else {
           setTimeout(fetchFileDetails, 1000)
         }
