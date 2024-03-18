@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const NavigationMenu = () => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const { isAuthenticated } = useSelector(state => state.auth);
 
   return (
     <nav className='nav-menu'>
