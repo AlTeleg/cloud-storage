@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu'
 
-const FileChange = ({ fileId, fileName, fileComment}) => {
+const FileChange = () => {
+  const location = useLocation();
+  const { fileName, fileComment } = location;
+  const { fileId } = useParams();
   const [newName, setNewName] = useState('');
   const [newComment, setNewComment] = useState('');
   const [name, setName] = useState(fileName);
   const [comment, setComment] = useState(fileComment);
   const navigate = useNavigate();
+
 
   const handleRename = async () => {
     try {
@@ -32,7 +36,7 @@ const FileChange = ({ fileId, fileName, fileComment}) => {
     }
   };
 
-  const handleDelete = async (fileId) => {
+  const handleDelete = async () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {

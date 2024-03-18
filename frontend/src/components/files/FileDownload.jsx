@@ -1,13 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from '../accounts/NavigationMenu';
 
-const FileDownload = ({ fileId }) => {
+const FileDownload = () => {
   const navigate = useNavigate();
+  const { fileId } = useParams();
 
   const downloadFile = async () => {
     try {
+      
       const response = await Api.downloadFile(fileId);
       if (response.statusText === "OK" && response.data) {
         const url = window.URL.createObjectURL(new Blob([response.data]));

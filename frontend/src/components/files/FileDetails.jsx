@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Api from '../../services/api';
 import fileImg from '../../img/file.png';
 import NavigationMenu from '../accounts/NavigationMenu';
 import FileViewer from 'react-file-viewer';
 
-const FileDetails = ({ fileId }) => {
+const FileDetails = () => {
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
+  const { fileId } = useParams();
 
   useEffect(() => {
+
+    const fetchFileDetails = async () => {
+      try {
+        if (window.file) {
+            setFile(window.file);
+        } else {
+          setTimeout(fetchFileDetails, 300)
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     fetchFileDetails();
   }, []);
 
-  const fetchFileDetails = async () => {
-    try {
-      const response = await Api.getFile(fileId);
-      if (response.statusText === "OK") {
-        if (response.data.files) {
-          setFile(response.data.file);
-        }
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  const handleDelete = async (fileId) => {
+
+  const handleDelete = async () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {

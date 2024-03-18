@@ -9,11 +9,11 @@ const FileList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       if (window.files) {
         setFilesShown(window.files);
       } else {
-        setTimeout(fetchData, 100);
+        setTimeout(fetchData, 300);
       }
     };
   
