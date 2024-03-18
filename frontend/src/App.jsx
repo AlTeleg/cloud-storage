@@ -10,10 +10,12 @@ import FileUpload from  './components/files/FileUpload';
 import FileDownload from  './components/files/FileDownload';
 import FileDetails from './components/files/FileDetails';
 import Logout from './components/accounts/Logout';
+import NavigationMenu from './components/accounts/NavigationMenu';
 
 const App = () => {
   return (
     <Router>
+      <NavigationMenu />
       <div className="app">
         <Routes>
           <Route path="/home" element={<HomePage />} name="home"/>
