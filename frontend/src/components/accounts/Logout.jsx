@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Api from '../../services/api';
 import { useNavigate } from "react-router-dom";
 import NavigationMenu from './NavigationMenu'
-import store from '../../reducers/authReducer'
+import store from '../../reducers/store'
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');

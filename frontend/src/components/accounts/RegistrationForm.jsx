@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
-import store from '../../reducers/authReducer'
+import store from '../../reducers/store'
 
 const RegistrationForm = () => {
   const navigate = useNavigate();

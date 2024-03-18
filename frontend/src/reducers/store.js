@@ -1,5 +1,6 @@
-import React from 'react';
 import { configureStore } from '@reduxjs/toolkit';
+import { persistReducer, persistStore } from 'redux-persist';
+import persistConfig from './persistConfig.js'; 
 
 const initialState = {
   isAuthenticated: false
@@ -22,8 +23,10 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
+const persistedReducer = persistReducer(persistConfig, authReducer); 
 const store = configureStore({
-  reducer: authReducer
+  reducer: persistedReducer
 });
 
+export const persistor = persistStore(store); 
 export default store;
