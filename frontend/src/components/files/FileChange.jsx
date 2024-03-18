@@ -16,9 +16,9 @@ const FileChange = () => {
 
   const handleRename = async () => {
     try {
-      const response = await Api.renameFile(fileId, newName);
+      const response = await Api.renameFile(fileId, { "name": newName });
       if (response.statusText === "OK") {
-        setName({ "name": newName });
+        setName(newName);
       }
     } catch (error) {
       console.error(error);
@@ -27,9 +27,9 @@ const FileChange = () => {
 
   const handleUpdateComment = async () => {
     try {
-      const response = await Api.commentFile(fileId, newComment);
+      const response = await Api.commentFile(fileId, { "comment": newComment });
       if (response.statusText === "OK") {
-        setComment({ "comment": newComment });
+        setComment(newComment);
       }
     } catch (error) {
       console.error(error);

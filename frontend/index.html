@@ -14,7 +14,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
       var files =  JSON.parse('{{ files | default:"[]" | safe }}');
-      var file =  JSON.parse('{{ file | default:"null" | safe }}');
+      var file =  '{{ file | default:"null" | safe }}';
       var users =  JSON.parse('{{ users | default:"[]" | safe }}');
     </script>
     <div id="root"></div>
