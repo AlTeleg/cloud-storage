@@ -18,7 +18,7 @@ const FileChange = () => {
     try {
       const response = await Api.renameFile(fileId, newName);
       if (response.statusText === "OK") {
-        setName(newName);
+        setName({ "name": newName });
       }
     } catch (error) {
       console.error(error);
@@ -29,7 +29,7 @@ const FileChange = () => {
     try {
       const response = await Api.commentFile(fileId, newComment);
       if (response.statusText === "OK") {
-        setComment(newComment);
+        setComment({ "comment": newComment });
       }
     } catch (error) {
       console.error(error);

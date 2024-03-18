@@ -13,7 +13,7 @@ const FileList = () => {
       if (window.files) {
         setFilesShown(window.files);
       } else {
-        setTimeout(fetchData, 300);
+        setTimeout(fetchData, 1000);
       }
     };
   

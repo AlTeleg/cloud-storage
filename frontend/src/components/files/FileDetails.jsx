@@ -17,7 +17,7 @@ const FileDetails = () => {
         if (window.file) {
             setFile(window.file);
         } else {
-          setTimeout(fetchFileDetails, 300)
+          setTimeout(fetchFileDetails, 1000)
         }
       } catch (error) {
         console.error(error);
