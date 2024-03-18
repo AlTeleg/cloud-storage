@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
 import NavigationMenu from './NavigationMenu'
-import store from '../../reducers/store'
+import { login } from '../../reducers/auth.js';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const LoginForm = () => {
     try {
       const response = await Api.loginUser(formData);
       if (response.statusText === "OK") {
-        store.dispatch({ type: 'LOGIN' });
+        dispatch(login());
         navigate('/home');
       }
     } catch (error) {

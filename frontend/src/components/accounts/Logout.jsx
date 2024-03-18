@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Api from '../../services/api';
 import { useNavigate } from "react-router-dom";
 import NavigationMenu from './NavigationMenu'
-import store from '../../reducers/store'
+import { logout } from '../../reducers/auth.js';
 
 const Logout = () => {
   const [logoutMessage, setLogoutMessage] = useState('');
@@ -16,7 +16,7 @@ const Logout = () => {
       const response = await Api.logoutUser();
       if (response.statusText === "OK") {
         setLogoutMessage(message);
-        store.dispatch({ type: 'LOGOUT' });
+        dispatch(logout());
         setMessage('Good bye! Have a nice day!')
         setTimeout(() => {
             setMessage(defaultMessage)
