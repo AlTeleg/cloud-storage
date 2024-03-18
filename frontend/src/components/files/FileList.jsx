@@ -10,7 +10,7 @@ const FileList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (window.files) {
+      if (window.files && window.files.length > 0) {
         setFilesShown(window.files);
       } else {
         setTimeout(fetchData, 1000);
