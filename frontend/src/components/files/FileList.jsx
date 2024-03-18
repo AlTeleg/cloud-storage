@@ -4,21 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
 import NavigationMenu from '../accounts/NavigationMenu'
 
-const FileList = ({ files }) => {
+const FileList = () => {
   const [filesShown, setFilesShown] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (window.files && window.files.length > 0) {
-  //       setFilesShown(window.files);
-  //     } else {
-  //       setTimeout(fetchData, 1000);
-  //     }
-  //   };
-  
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("interval enter")
+      if (window.files && window.files.length > 0) {
+        setFilesShown(window.files);
+        clearInterval(interval); 
+      }
+    }, 500);
+
+    return () => {
+      clearInterval(interval); 
+    };
+  }, []);
 
   const handleDelete = async (fileId) => {
     try {
@@ -50,11 +52,11 @@ const FileList = ({ files }) => {
     <>
       <NavigationMenu />
       <h2>Files</h2>
-      {files.length === 0 ? (
+      {filesShown.length === 0 ? (
       <p>File list is empty</p>
       ) : (
       <ul>
-        {files.map((file) => (
+        {filesShown.map((file) => (
           <li key={file.id}>
             <img
               src={fileImage}

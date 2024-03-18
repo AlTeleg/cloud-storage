@@ -15,8 +15,9 @@ const FileDetails = () => {
     const fetchFileDetails = async () => {
       try {
         if (window.file) {
-            setFile({ "file": window.file });
+            setFile(window.file);
         } else {
+          console.log("fetchFileDetails")
           setTimeout(fetchFileDetails, 1000)
         }
       } catch (error) {
@@ -43,8 +44,8 @@ const FileDetails = () => {
   if (!file) {
     return <div>Loading file details...</div>;
   }
-
-  const fileExtension = file.name.split('.').pop().toLowerCase();
+  
+  const fileExtension = file.name.split('.').pop().toLowerCase() || '';
   const mediaTypes = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'];
 
   return (
