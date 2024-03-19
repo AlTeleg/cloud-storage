@@ -62,7 +62,7 @@ const RegistrationForm = () => {
         const response = await Api.registerUser(formData);
         if (response.statusText === "OK") {
           dispatch(login());
-          navigate('/home/');
+          navigate('/home');
         }
       } catch (error) {
         console.error(error);
