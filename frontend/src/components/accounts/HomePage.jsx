@@ -24,11 +24,15 @@ const HomePage = () => {
     fetchFiles();
   }, []);
 
+  const handleClick = async (e) => {
+    navigate(`files/${e.target.dataset.key}`)
+  }
+
   const sortedFiles = files.sort((a, b) =>
     new Date(b.last_download_date) - new Date(a.last_download_date)
   );
   const lastDownloadedFiles = sortedFiles.slice(0, 5);
-
+  
   return (
     <>
       <h1>Welcome to Your Storage</h1>
@@ -50,8 +54,8 @@ const HomePage = () => {
       <h2>Last Downloaded</h2>
       <ul>
         {lastDownloadedFiles.map((file) => (
-          <li key={file.id}>
-            {file.file_name} ({file.size})
+          <li key={file.id} onClick={handleClick}>
+            {file.name} - {file.size}byte
           </li>
         ))}
       </ul>
