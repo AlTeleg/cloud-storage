@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Api from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
 
   const [files, setFiles] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -24,8 +26,8 @@ const HomePage = () => {
     fetchFiles();
   }, []);
 
-  const handleClick = async (e) => {
-    navigate(`files/${e.target.dataset.key}`)
+  const handleClick = async (fileId) => {
+    navigate(`files/${fileId}`)
   }
 
   const sortedFiles = files.sort((a, b) =>
@@ -54,7 +56,7 @@ const HomePage = () => {
       <h2>Last Downloaded</h2>
       <ul>
         {lastDownloadedFiles.map((file) => (
-          <li key={file.id} onClick={handleClick}>
+          <li key={file.id} className='last-downloaded-file-item' onClick={handleClick(file.id)}>
             {file.name} - {file.size}byte
           </li>
         ))}

@@ -50,3 +50,7 @@ form {
 form input {
     margin-bottom: 20px;
 }
+
+.last-downloaded-file-item {
+    cursor: pointer;
+}
