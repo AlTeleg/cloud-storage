@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, Route, Routes } from 'react-router-dom';
 import Api from '../../services/api';
-import NavigationMenu from './NavigationMenu'
 
 const AdminInterface = () => {
   return (
     <>
-      <NavigationMenu/ >
       <h2>Admin Interface</h2>
       <nav>
         <ul>
@@ -185,7 +183,7 @@ const AllUsers = () => {
       {selectedUser ? (
         <div>
           <h3>
-            Selected User: {selectedUser.username}{' '}
+            Selected User: {selectedUser.username}
             <button onClick={handleGoBack}>Go Back</button>
           </h3>
           <h4>Files:</h4>

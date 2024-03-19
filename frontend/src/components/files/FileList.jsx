@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import fileImage from '../../img/file.png';
-import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileList = () => {
   const [filesShown, setFilesShown] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    fetchFilesData();
-
+    fetchFiles();
   }, []);
 
-  const fetchFilesData = async () => {
+  const fetchFiles = async () => {
     try {
-      if (window.files && window.files.length > 0) {
-        console.log('Files found')
-        setFilesShown(window.files);
+      const response = await Api.getAllFiles();
+      if (response.statusText === "OK") {
+        if (response.data.files) {
+          setFilesShown(response.data.files)
+        }
       }
     } catch (error) {
       console.error(error);
@@ -29,7 +28,7 @@ const FileList = () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
-        fetchData();
+        fetchFiles();
       }
     } catch (error) {
       console.error(error);

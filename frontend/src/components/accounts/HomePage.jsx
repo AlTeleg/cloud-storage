@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import NavigationMenu from './NavigationMenu'
 import Api from '../../services/api';
 
 const HomePage = () => {

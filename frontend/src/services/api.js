@@ -50,7 +50,7 @@ class Api {
 
   async getFiles() {
     try {
-      const response = await this.api.get('files/');
+      const response = await this.api.get('files/get/');
       return response;
     } catch (error) {
       console.error(error)
@@ -59,16 +59,16 @@ class Api {
 
   async getFile(fileid) {
     try {
-      const response = await this.api.get(`files/${fileid}/`);
+      const response = await this.api.get(`files/${fileid}/get/`);
       return response;
     } catch (error) {
       console.error(error)
     }
   }
 
+
   async uploadFile(formData) {
     try {
-
       const response = await this.api.post('files/upload/', formData);
       return response;
     } catch (error) {
@@ -116,7 +116,7 @@ class Api {
 
   async getUsers() {
     try {
-      const response = await this.api.get('admin/users/');
+      const response = await this.api.get('admin/users/get/');
       return response;
     } catch (error) {
       console.error(error)
@@ -134,7 +134,7 @@ class Api {
 
   async getAllFiles(sort = 'upload_date', filter = null) {
     try {
-      const response = await this.api.get('admin/files/', {
+      const response = await this.api.get('admin/files/get/', {
         params: {
           sort: sort,
           filter: filter

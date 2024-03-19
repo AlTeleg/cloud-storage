@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import Api from '../../services/api';
-import NavigationMenu from '../accounts/NavigationMenu'
 
 const FileChange = () => {
   const location = useLocation();
@@ -12,7 +11,6 @@ const FileChange = () => {
   const [name, setName] = useState(fileName);
   const [comment, setComment] = useState(fileComment);
   const navigate = useNavigate();
-
 
   const handleRename = async () => {
     try {
