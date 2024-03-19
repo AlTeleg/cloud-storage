@@ -221,7 +221,7 @@ const AllFiles = () => {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [selectedFilterField, setSelectedFilterField] = useState(null);
-  const [selectedSortField, setSelectedSortField] = useState(null);
+  const [selectedSortField, setSelectedSortField] = useState('upload_date');
   const [filterValue, setFilterValue] = useState(null);
   const [h3Option, setH3Option] = useState('Last day files');
 
@@ -238,9 +238,9 @@ const AllFiles = () => {
       { value: 'last_download_date', label: 'Last Download Date' }
    ];
 
-  const fetchFiles = async (sort='upload_date', filter=None) => {
+  const fetchFiles = async () => {
     try {
-      const response = await Api.getAllFiles();
+      const response = await Api.getAllFiles(selectedSortField, selectedFilterField, filterValue);
       if (response.statusText === "OK") {
         if (response.data.files) {
           setFiles(response.data.files);

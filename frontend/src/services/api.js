@@ -132,12 +132,13 @@ class Api {
     }
   }
 
-  async getAllFiles(sort = 'upload_date', filter = null) {
+  async getAllFiles(sort = 'upload_date', filter = null, filterValue = null) {
     try {
       const response = await this.api.get('admin/files/get/', {
         params: {
           sort: sort,
-          filter: filter
+          filter: filter,
+          filter_value: filterValue
         }
       });
       return response;

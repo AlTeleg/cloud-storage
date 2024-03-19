@@ -13,7 +13,7 @@ const FileList = () => {
 
   const fetchFiles = async () => {
     try {
-      const response = await Api.getAllFiles();
+      const response = await Api.getFiles();
       if (response.statusText === "OK") {
         if (response.data.files) {
           setFilesShown(response.data.files)
