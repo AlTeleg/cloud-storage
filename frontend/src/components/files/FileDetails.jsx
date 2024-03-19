@@ -56,8 +56,8 @@ const FileDetails = () => {
       <hr />
       <p>Original Name: {file.original_name}</p>
       <p>File Size: {file.size}</p>
-      <p>Upload Date: {file.upload_date}</p>
-      <p>Last Download Date: {file.last_download_date}</p>
+      <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
+      <p>Last Download Date: {new Date(file.last_download_date).toLocaleDateString()}</p>
       <hr />
       <p>Special download link: {window.location.host}{file.special_link}</p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
