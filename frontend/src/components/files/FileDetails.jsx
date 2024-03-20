@@ -59,7 +59,7 @@ const FileDetails = () => {
       <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
       <p>Last Download Date: {new Date(file.last_download_date).toLocaleDateString()}</p>
       <hr />
-      <p>Special download link: {window.location.host}{file.special_link}</p>
+      <p>Special download link: <a href={window.location.host + file.special_link}>{window.location.host}{file.special_link}</a></p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
     </>
   );
