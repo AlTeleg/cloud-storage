@@ -56,7 +56,7 @@ const HomePage = () => {
       <h2>Last Downloaded</h2>
       <ul>
         {lastDownloadedFiles.map((file) => (
-          <li key={file.id} className='last-downloaded-file-item' onClick={handleClick(file.id)}>
+          <li key={file.id} className='last-downloaded-file-item' onClick={() => handleClick(file.id)}>
             {file.name} - {file.size}byte
           </li>
         ))}

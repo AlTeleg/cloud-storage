@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
-import { login } from '../../reducers/auth.js';
+import { login, logout } from '../../reducers/auth.js';
 import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {
@@ -12,6 +12,10 @@ const LoginForm = () => {
   });
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(logout())
+  }, []);
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
