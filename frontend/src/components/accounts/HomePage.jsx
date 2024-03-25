@@ -7,6 +7,7 @@ const HomePage = () => {
 
   const [files, setFiles] = useState([]);
   const navigate = useNavigate();
+  const [lastDownloadedFiles, setLastDownloadedFiles] = useState([]);
 
   useEffect(() => {
 
@@ -17,6 +18,10 @@ const HomePage = () => {
           if (response.data.files) {
             setFiles(response.data.files);
           }
+        const sortedFiles = files.sort((a, b) =>
+          new Date(b.upload_date) - new Date(a.upload_date)
+        );
+        setLastDownloadedFiles(sortedFiles.slice(0, 5));
         }
       } catch (error) {
         console.error(error);
@@ -30,10 +35,7 @@ const HomePage = () => {
     navigate(`files/${fileId}`)
   }
 
-  const sortedFiles = files.sort((a, b) =>
-    new Date(b.last_download_date) - new Date(a.last_download_date)
-  );
-  const lastDownloadedFiles = sortedFiles.slice(0, 5);
+
   
   return (
     <>

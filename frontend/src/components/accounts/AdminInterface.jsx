@@ -2,31 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, Route, Routes } from 'react-router-dom';
 import Api from '../../services/api';
 
-const AdminInterface = () => {
-  return (
-    <>
-      <h2>Admin Interface</h2>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/admin/create-user">Create User</Link>
-          </li>
-          <li>
-            <Link to="/admin/users">All Users</Link>
-          </li>
-          <li>
-            <Link to="/admin/files">All Files</Link>
-          </li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/admin/create-user" element={<CreateUser />} name='admin-create-user'/>
-        <Route path="/admin/users" element={<AllUsers />} name='admin-users'/>
-        <Route path="/admin/files" element={<AllFiles />} name='admin-files'/>
-      </Routes>
-    </>
-  );
-};
+
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -341,10 +317,35 @@ const AllFiles = () => {
   );
 };
 
+const AdminInterface = () => {
+  return (
+    <>
+      <h2>Admin Interface</h2>
+      <nav>
+        <ul>
+          <li>
+            <Link to="admin/create-user">Create User</Link>
+          </li>
+          <li>
+            <Link to="admin/users">All Users</Link>
+          </li>
+          <li>
+            <Link to="admin/files">All Files</Link>
+          </li>
+        </ul>
+      </nav>
+    </>
+  );
+};
+
 const AdminInterfaceWrapper = () => {
   return (
     <Routes>
-      <Route path="/admin/*" element={<AdminInterface />} />
+      <Route path="/admin/*" element={<AdminInterface />}>
+        <Route path="/create-user" element={<CreateUser />} name='admin-create-user' />
+        <Route path="/users" element={<AllUsers />} name='admin-users' />
+        <Route path="/files" element={<AllFiles />} name='admin-files' />
+      </Route>
     </Routes>
   );
 };
