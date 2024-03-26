@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/accounts/HomePage';
 import RegistrationForm from './components/accounts/RegistrationForm';
 import LoginForm from './components/accounts/LoginForm';
-import AdminInterfaceWrapper from './components/accounts/AdminInterface';
+import {AdminInterface, CreateUser, AllUsers, AllFiles } from './components/accounts/AdminInterface';
 import FileList from  './components/files/FileList';
 import FileChange from  './components/files/FileChange';
 import FileUpload from  './components/files/FileUpload';
@@ -28,7 +28,10 @@ const App = () => {
           <Route path="/files/:fileId/download" element={<FileDownload />} name="file-download"/>
           <Route path="/files/:fileId/rename" element={<FileChange />} name="file-change-rename"/>
           <Route path="/files/:fileId/comment" element={<FileChange />} name="file-change-comment"/>
-          <Route path="/admin/*" element={<AdminInterfaceWrapper />} name="admin"/>
+          <Route path="/admin" element={<AdminInterface />} name='admin'/>
+          <Route path="/admin/create-user" element={<CreateUser />} name='admin-create-user' />
+          <Route path="/admin/users" element={<AllUsers />} name='admin-users' />
+          <Route path="/admin/files" element={<AllFiles />} name='admin-files' /> 
         </Routes>
       </div>
     </Router>

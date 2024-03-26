@@ -3,8 +3,7 @@ import { useNavigate, Link, Route, Routes } from 'react-router-dom';
 import Api from '../../services/api';
 
 
-
-const CreateUser = () => {
+export const CreateUser = () => {
   const navigate = useNavigate();
   const [IsAdmin, setIsAdmin] = useState(False)
   const [IsSuperuser, setIsSuperuser] = useState(False)
@@ -73,7 +72,7 @@ const CreateUser = () => {
   );
 };
 
-const AllUsers = () => {
+export const AllUsers = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [selectedUserFiles, setSelectedUserFiles] = useState(null);
@@ -193,7 +192,7 @@ const AllUsers = () => {
   );
 };
 
-const AllFiles = () => {
+export const AllFiles = () => {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [selectedFilterField, setSelectedFilterField] = useState(null);
@@ -317,7 +316,8 @@ const AllFiles = () => {
   );
 };
 
-const AdminInterface = () => {
+
+export const AdminInterface = () => {
   return (
     <>
       <h2>Admin Interface</h2>
@@ -337,17 +337,3 @@ const AdminInterface = () => {
     </>
   );
 };
-
-const AdminInterfaceWrapper = () => {
-  return (
-    <Routes>
-      <Route path="/admin/*" element={<AdminInterface />}>
-        <Route path="create-user" element={<CreateUser />} name='admin-create-user' />
-        <Route path="users" element={<AllUsers />} name='admin-users' />
-        <Route path="files" element={<AllFiles />} name='admin-files' />
-      </Route>
-    </Routes>
-  );
-};
-
-export default AdminInterfaceWrapper;
