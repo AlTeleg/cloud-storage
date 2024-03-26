@@ -342,9 +342,9 @@ const AdminInterfaceWrapper = () => {
   return (
     <Routes>
       <Route path="/admin/*" element={<AdminInterface />}>
-        <Route path="/create-user" element={<CreateUser />} name='admin-create-user' />
-        <Route path="/users" element={<AllUsers />} name='admin-users' />
-        <Route path="/files" element={<AllFiles />} name='admin-files' />
+        <Route path="create-user" element={<CreateUser />} name='admin-create-user' />
+        <Route path="users" element={<AllUsers />} name='admin-users' />
+        <Route path="files" element={<AllFiles />} name='admin-files' />
       </Route>
     </Routes>
   );
