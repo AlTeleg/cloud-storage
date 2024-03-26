@@ -17,11 +17,11 @@ const HomePage = () => {
         if (response.statusText === "OK") {
           if (response.data.files) {
             setFiles(response.data.files);
+            const sortedFiles = files.sort((a, b) =>
+            new Date(b.upload_date) - new Date(a.upload_date)
+          );
+          setLastDownloadedFiles(sortedFiles.slice(0, 5));
           }
-        const sortedFiles = files.sort((a, b) =>
-          new Date(b.upload_date) - new Date(a.upload_date)
-        );
-        setLastDownloadedFiles(sortedFiles.slice(0, 5));
         }
       } catch (error) {
         console.error(error);

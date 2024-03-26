@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link, Route, Routes } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Api from '../../services/api';
 
 
 export const CreateUser = () => {
   const navigate = useNavigate();
-  const [IsAdmin, setIsAdmin] = useState(False)
-  const [IsSuperuser, setIsSuperuser] = useState(False)
+  const [IsAdmin, setIsAdmin] = useState(false)
+  const [IsSuperuser, setIsSuperuser] = useState(false)
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
@@ -324,13 +324,13 @@ export const AdminInterface = () => {
       <nav>
         <ul>
           <li>
-            <Link to="admin/create-user">Create User</Link>
+            <Link to="/create-user">Create User</Link>
           </li>
           <li>
-            <Link to="admin/users">All Users</Link>
+            <Link to="/users">All Users</Link>
           </li>
           <li>
-            <Link to="admin/files">All Files</Link>
+            <Link to="/files">All Files</Link>
           </li>
         </ul>
       </nav>

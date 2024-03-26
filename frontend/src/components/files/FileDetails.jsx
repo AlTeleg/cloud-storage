@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Api from '../../services/api';
 import fileImg from '../../img/file.png';
 import FileViewer from 'react-file-viewer';
@@ -7,6 +7,7 @@ import FileViewer from 'react-file-viewer';
 const FileDetails = () => {
   const { fileId } = useParams();
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFileDetails();
@@ -28,7 +29,7 @@ const FileDetails = () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
-        fetchFileDetails();
+        navigate('-1');
       }
     } catch (error) {
       console.error(error);
@@ -42,19 +43,14 @@ const FileDetails = () => {
   const fileExtension = file.name.split('.').pop().toLowerCase();
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
 
-  const handleFileChange = (event) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const fileContent = event.target.result;
-      setFile((prevFile) => ({ ...prevFile, data: fileContent }));
-    };
-    reader.readAsText(event.target.files[0]);
-  };
 
   return (
     <>
       {fileExtension === 'txt' ? (
-        <input type="file" accept=".txt" onChange={handleFileChange} />
+        <>
+          <p>{FileReader().readAsText(file)}</p>
+          <br />
+        </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
           <FileViewer fileType={fileExtension} filePath={file.data} />
@@ -69,7 +65,7 @@ const FileDetails = () => {
       <p>Original Name: {file.original_name}</p>
       <p>File Size: {file.size}</p>
       <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
-      <p>Last Download Date: {new Date(file.last_download_date).toLocaleDateString()}</p>
+      <p>Last Download Date: {new Date(file.last_download_date).toLocaleDateString() || 'Never'}</p>
       <hr />
       <p>Special download link: <a href={`${window.location.origin}${file.special_link}`}>{window.location.origin}{file.special_link}</a></p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
