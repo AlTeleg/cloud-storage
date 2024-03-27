@@ -4,7 +4,7 @@ import Api from '../../services/api';
 
 const FileChange = () => {
   const location = useLocation();
-  const { fileName, fileComment } = location;
+  const { fileName, fileComment } = location.state;
   const { fileId } = useParams();
   const [newName, setNewName] = useState('');
   const [newComment, setNewComment] = useState('');

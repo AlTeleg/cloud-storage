@@ -45,10 +45,12 @@ const FileList = () => {
 
   const handleRename = (fileId, fileName, fileComment) => {
     navigate(`/files/${fileId}/rename`, {
-        fileName: fileName,
-        fileComment: fileComment
+        state: {
+            fileName: fileName,
+            fileComment: fileComment
+        }
     });
-  };
+};
 
   return (
     <>

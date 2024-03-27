@@ -14,6 +14,8 @@ export const CreateUser = () => {
       const userData = {
         username: e.target.username.value,
         password: e.target.password.value,
+        full_name: e.target.full_name.value || 'Not provided',
+        email: e.target.email.value || 'noemail@admin.com',
         permissions: {
           is_admin: IsAdmin,
           is_superuser: IsSuperuser,
@@ -55,6 +57,16 @@ export const CreateUser = () => {
           name="password"
           placeholder="Password"
           required
+        />
+        <input
+          type="text"
+          name="full_name"
+          placeholder="Full name"
+        />
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
         />
         <label>
             <input type="checkbox" name="is_admin"  onChange={handleAdminCheckboxChange}/>
@@ -108,7 +120,9 @@ export const AllUsers = () => {
 
   const handleViewUserFiles = async (userId, username) => {
     try {
-      const response = await Api.getAllFiles(filter='user', filter_value=userId);
+      let sort ='upload_date';
+      let filter='user';
+      const response = await Api.getAllFiles(sort, filter, userId);
       if (response.statusText === "OK") {
         setSelectedUser(username);
         if (response.data.files) {
@@ -178,7 +192,11 @@ export const AllUsers = () => {
           <ul>
             {users.map((user) => (
               <li key={user.id}>
-                {user.username}
+                <p>Id: {user.id}</p>
+                <p>Username: {user.username}</p>
+                <p>Full name:{user.full_name}</p>
+                <p>Email: {user.email}</p>
+                <p>Is admin:{user.is_admin}</p>
                 <button onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
                 <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
