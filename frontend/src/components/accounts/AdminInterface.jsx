@@ -200,9 +200,6 @@ export const AllFiles = () => {
   const [filterValue, setFilterValue] = useState(null);
   const [h3Option, setH3Option] = useState('Last day files');
 
-  useEffect(() => {
-    fetchFiles();
-  }, []);
 
    const fieldOptions = [
       { value: 'user', label: 'User' },
