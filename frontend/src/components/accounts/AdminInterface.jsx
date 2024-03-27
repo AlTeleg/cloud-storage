@@ -108,7 +108,7 @@ export const AllUsers = () => {
 
   const handleViewUserFiles = async (userId, username) => {
     try {
-      const response = await Api.getAllFiles(filter=userId);
+      const response = await Api.getAllFiles(filter='user', filter_value=userId);
       if (response.statusText === "OK") {
         setSelectedUser(username);
         if (response.data.files) {
@@ -324,13 +324,13 @@ export const AdminInterface = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/create-user">Create User</Link>
+            <Link to="/admin/create-user">Create User</Link>
           </li>
           <li>
-            <Link to="/users">All Users</Link>
+            <Link to="/admin/users">All Users</Link>
           </li>
           <li>
-            <Link to="/files">All Files</Link>
+            <Link to="/admin/files">All Files</Link>
           </li>
         </ul>
       </nav>

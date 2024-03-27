@@ -48,12 +48,12 @@ const FileDetails = () => {
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{FileReader().readAsText(file)}</p>
+          <p>{new FileReader().readAsText(file)}</p>
           <br />
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={file.data} />
+          <FileViewer fileType={fileExtension} filePath={file.path} />
         ) : (
           <img src={fileImg} alt="File" />
         )
