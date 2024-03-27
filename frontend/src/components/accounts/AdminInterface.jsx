@@ -200,6 +200,9 @@ export const AllFiles = () => {
   const [filterValue, setFilterValue] = useState(null);
   const [h3Option, setH3Option] = useState('Last day files');
 
+  useEffect(() => {
+    fetchFiles();
+  }, []);
 
    const fieldOptions = [
       { value: 'user', label: 'User' },
@@ -227,7 +230,7 @@ export const AllFiles = () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
-        fetchFiles(selectedSortField, selectedFilterField, filterValue);
+        fetchFiles();
       }
     } catch (e) {
       console.error('Failed to delete file:', e);
@@ -235,7 +238,7 @@ export const AllFiles = () => {
   };
 
   const handleApplyFilterAndSort = () => {
-    fetchFiles(selectedSortField, selectedFilterField, filterValue)
+    fetchFiles()
     setH3Option('Files');
   };
 
