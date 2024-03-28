@@ -11,8 +11,8 @@ const FileDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchFileDetails();
-    fileUrlSet();
+    fetchFileDetails()
+    .then(fileUrlSet());
   }, []);
 
   const fetchFileDetails = async () => {
