@@ -27,6 +27,12 @@ const FileDetails = () => {
     }
   };
 
+  const fileUrlSet =  async () => {
+    const blob = new Blob([atob(file.data)], { type: 'application/octet-stream' });
+    const fileUrlObj = URL.createObjectURL(blob);
+    setFileUrl(fileUrlObj);
+  }
+
   const handleDelete = async () => {
     try {
       const response = await Api.deleteFile(fileId);
@@ -45,13 +51,6 @@ const FileDetails = () => {
 
   const fileExtension = file.name.split('.').pop().toLowerCase();
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
-
-
-  const fileUrlSet =  async () => {
-    const blob = new Blob([atob(file.data)], { type: 'application/octet-stream' });
-    const fileUrl = URL.createObjectURL(blob);
-    setFileUrl(fileUrl);
-  }
 
 
   return (
