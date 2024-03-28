@@ -12,8 +12,14 @@ const FileDetails = () => {
 
   useEffect(() => {
     fetchFileDetails()
-    .then(() => fileUrlSet());
   }, []);
+
+  const fileUrlSet = async () => {
+    const response = await fetch(`data:${file.type};base64,${file.data}`);
+    const blob = await response.blob();
+    const fileUrlObj = URL.createObjectURL(blob);
+    setFileUrl(fileUrlObj);
+  };
 
   const fetchFileDetails = async () => {
     try {
@@ -21,18 +27,13 @@ const FileDetails = () => {
       if (response.statusText === "OK") {
         const fetchedFile = response.data.file;
         setFile(fetchedFile);
+        fileUrlSet();
       }
     } catch (error) {
       console.error(error);
     }
   };
-
-  const fileUrlSet =  async () => {
-    const blob = new Blob([atob(file.data)]);
-    const fileUrlObj = URL.createObjectURL(blob);
-    setFileUrl(fileUrlObj);
-  }
-
+ 
   const handleDelete = async () => {
     try {
       const response = await Api.deleteFile(fileId);
