@@ -15,7 +15,6 @@ const HomePage = () => {
         const response = await Api.getFiles();
         if (response.statusText === "OK") {
           if (response.data.files) {
-            setFiles(response.data.files);
             const sortedFiles = response.data.files.sort((a, b) =>
             new Date(b.upload_date) - new Date(a.upload_date)
           );
