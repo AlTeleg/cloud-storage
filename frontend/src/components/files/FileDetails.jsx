@@ -20,8 +20,8 @@ const FileDetails = () => {
       if (response.statusText === "OK") {
         const fetchedFile = response.data.file;
         setFile(fetchedFile);
-        const decodedData = atob(file.data);
-        const fileExtension = file.name.split('.').pop().toLowerCase();
+        const decodedData = atob(fetchedFile.data);
+        const fileExtension = fetchedFile.name.split('.').pop().toLowerCase();
         const blob = new Blob([decodedData], { type: fileExtension });
         const fileUrlObj = URL.createObjectURL(blob);
         setFileUrl(fileUrlObj);

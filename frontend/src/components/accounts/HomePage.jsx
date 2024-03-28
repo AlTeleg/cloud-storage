@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
 
-  const [files, setFiles] = useState([]);
   const navigate = useNavigate();
   const [lastDownloadedFiles, setLastDownloadedFiles] = useState([]);
 
@@ -17,7 +16,7 @@ const HomePage = () => {
         if (response.statusText === "OK") {
           if (response.data.files) {
             setFiles(response.data.files);
-            const sortedFiles = files.sort((a, b) =>
+            const sortedFiles = response.data.files.sort((a, b) =>
             new Date(b.upload_date) - new Date(a.upload_date)
           );
           console.log(sortedFiles);
