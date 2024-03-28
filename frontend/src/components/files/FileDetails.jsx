@@ -36,17 +36,6 @@ const FileDetails = () => {
     }
   };
 
-  const base64ToArrayBuffer = async (base64) => {
-    const binaryString = window.atob(base64);
-    const length = binaryString.length;
-    const bytes = new Uint8Array(length);
-  
-    for (let i = 0; i < length; i++) {
-      bytes[i] = binaryString.charCodeAt(i);
-    }
-  
-    return bytes.buffer;
-  }
 
   if (!file) {
     return <div>Loading file details...</div>;
@@ -56,16 +45,24 @@ const FileDetails = () => {
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
 
 
+  const makeFile = async () => {
+    const blob = new Blob([atob(file.data)], { type: 'application/octet-stream' });
+    const fileBlob = new File([blob], file.name);
+    return fileBlob
+  }
+
+
+
   return (
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(base64ToArrayBuffer(file.data))}</p>
+          <p>{new FileReader().readAsText(new Blob([atob(file.data)], { type: 'application/octet-stream' }))}</p>
           <br />
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={base64ToArrayBuffer(file.data)} />
+          <FileViewer fileType={fileExtension} filePath={makeFile()} />
         ) : (
           <img src={fileImg} alt="File" />
         )
