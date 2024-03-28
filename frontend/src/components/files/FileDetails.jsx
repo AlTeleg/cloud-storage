@@ -12,7 +12,7 @@ const FileDetails = () => {
 
   useEffect(() => {
     fetchFileDetails()
-    .then(fileUrlSet());
+    .then(() => fileUrlSet());
   }, []);
 
   const fetchFileDetails = async () => {
@@ -28,7 +28,7 @@ const FileDetails = () => {
   };
 
   const fileUrlSet =  async () => {
-    const blob = new Blob([atob(file.data)], { type: 'application/octet-stream' });
+    const blob = new Blob([atob(file.data)]);
     const fileUrlObj = URL.createObjectURL(blob);
     setFileUrl(fileUrlObj);
   }
@@ -57,7 +57,7 @@ const FileDetails = () => {
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(fileUrl)}</p>
+          <p>{new FileReader().readAsText(new Blob(atob(file.data), { type: fileExtension }))}</p>
           <br />
         </>
       ) : (

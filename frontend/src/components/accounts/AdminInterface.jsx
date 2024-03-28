@@ -197,6 +197,7 @@ export const AllUsers = () => {
                 <p>Full name:{user.full_name}</p>
                 <p>Email: {user.email}</p>
                 <p>Is admin:{user.is_admin}</p>
+                <p>Is superuser:{user.is_superuser}</p>
                 <button onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
                 <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
