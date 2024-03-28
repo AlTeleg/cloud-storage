@@ -14,20 +14,17 @@ const FileDetails = () => {
     fetchFileDetails()
   }, []);
 
-  const fileUrlSet = async () => {
-    const response = await fetch(`data:${file.type};base64,${file.data}`);
-    const blob = await response.blob();
-    const fileUrlObj = URL.createObjectURL(blob);
-    setFileUrl(fileUrlObj);
-  };
-
   const fetchFileDetails = async () => {
     try {
       const response = await Api.getFile(fileId);
       if (response.statusText === "OK") {
         const fetchedFile = response.data.file;
         setFile(fetchedFile);
-        fileUrlSet();
+        const decodedData = atob(file.data);
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        const blob = new Blob([decodedData], { type: fileExtension });
+        const fileUrlObj = URL.createObjectURL(blob);
+        setFileUrl(fileUrlObj);
       }
     } catch (error) {
       console.error(error);
