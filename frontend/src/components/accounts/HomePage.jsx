@@ -20,7 +20,9 @@ const HomePage = () => {
             const sortedFiles = files.sort((a, b) =>
             new Date(b.upload_date) - new Date(a.upload_date)
           );
+          console.log(sortedFiles);
           setLastDownloadedFiles(sortedFiles.slice(0, 5));
+          console.log(lastDownloadedFiles);
           }
         }
       } catch (error) {

@@ -7,10 +7,12 @@ import FileViewer from 'react-file-viewer';
 const FileDetails = () => {
   const { fileId } = useParams();
   const [file, setFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchFileDetails();
+    fileUrlSet();
   }, []);
 
   const fetchFileDetails = async () => {
@@ -45,24 +47,23 @@ const FileDetails = () => {
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
 
 
-  const makeFile = async () => {
+  const fileUrlSet =  async () => {
     const blob = new Blob([atob(file.data)], { type: 'application/octet-stream' });
-    const fileBlob = new File([blob], file.name);
-    return fileBlob
+    const fileUrl = URL.createObjectURL(blob);
+    setFileUrl(fileUrl);
   }
-
 
 
   return (
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(new Blob([atob(file.data)], { type: 'application/octet-stream' }))}</p>
+          <p>{new FileReader().readAsText(fileUrl)}</p>
           <br />
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={makeFile} />
+          <FileViewer fileType={fileExtension} filePath={fileUrl} />
         ) : (
           <img src={fileImg} alt="File" />
         )
