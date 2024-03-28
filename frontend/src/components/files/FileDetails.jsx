@@ -62,7 +62,7 @@ const FileDetails = () => {
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={makeFile()} />
+          <FileViewer fileType={fileExtension} filePath={makeFile} />
         ) : (
           <img src={fileImg} alt="File" />
         )

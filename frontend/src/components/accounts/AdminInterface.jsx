@@ -223,12 +223,13 @@ export const AllFiles = () => {
   }, []);
 
    const fieldOptions = [
-      { value: 'user', label: 'User' },
+      { value: 'user_id', label: 'User id' },
+      { value: 'username', label: 'Username'},
       { value: 'original_name', label: 'Original Name' },
       { value: 'name', label: 'Name' },
-      { value: 'size', label: 'Size' },
-      { value: 'upload_date', label: 'Upload Date' },
-      { value: 'last_download_date', label: 'Last Download Date' }
+      { value: 'size', label: 'Size +-10%' },
+      { value: 'upload_date', label: 'Upload Date - dd.mm.yyyy' },
+      { value: 'last_download_date', label: 'Last Download Date - dd.mm.yyyy' }
    ];
 
   const fetchFiles = async () => {
