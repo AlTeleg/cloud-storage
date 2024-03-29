@@ -25,7 +25,6 @@ const FileDetails = () => {
         const blob = new Blob([decodedData], { type: fileExtension });
         const fileUrlObj = URL.createObjectURL(blob);
         setFileUrl(fileUrlObj);
-        console.log(fileUrlObj)
       }
     } catch (error) {
       console.error(error);
@@ -56,12 +55,12 @@ const FileDetails = () => {
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(new Blob(atob(file.data), { type: fileExtension }))}</p>
+          <p>{new FileReader().readAsDataURL(fileUrl)}</p>
           <br />
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={fileUrl} />
+          <FileViewer fileType={fileExtension} filePath={`data:${fileExtension};base64,${file.data}`} />
         ) : (
           <img src={fileImg} alt="File" />
         )
@@ -71,7 +70,7 @@ const FileDetails = () => {
       <p>Comment: {file.comment || ''}</p>
       <hr />
       <p>Original Name: {file.original_name}</p>
-      <p>File Size: {file.size}</p>
+      <p>File Size: {file.size} bytes</p>
       <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
       <p>Last Download Date: {file.last_download_date ? new Date(file.last_download_date).toLocaleDateString() : 'Never'}</p>
       <hr />

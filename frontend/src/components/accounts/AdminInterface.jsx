@@ -87,7 +87,7 @@ export const CreateUser = () => {
 export const AllUsers = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [selectedUserFiles, setSelectedUserFiles] = useState(null);
+  const [selectedUserFiles, setSelectedUserFiles] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export const AllUsers = () => {
   const handleViewUserFiles = async (userId, username) => {
     try {
       let sort ='upload_date';
-      let filter='user';
+      let filter='user_id';
       const response = await Api.getAllFiles(sort, filter, userId);
       if (response.statusText === "OK") {
         setSelectedUser({
