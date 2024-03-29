@@ -32,7 +32,7 @@ const HomePage = () => {
   }, []);
 
   const handleClick = async (fileId) => {
-    navigate(`files/${fileId}`)
+    navigate(`/files/${fileId}`)
   }
 
 

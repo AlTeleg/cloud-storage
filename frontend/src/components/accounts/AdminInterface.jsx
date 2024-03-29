@@ -124,7 +124,10 @@ export const AllUsers = () => {
       let filter='user';
       const response = await Api.getAllFiles(sort, filter, userId);
       if (response.statusText === "OK") {
-        setSelectedUser(username);
+        setSelectedUser({
+          id: userId,
+          username: username,
+        });
         if (response.data.files) {
           setSelectedUserFiles(response.data.files);
         }

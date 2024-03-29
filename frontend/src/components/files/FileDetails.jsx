@@ -25,6 +25,7 @@ const FileDetails = () => {
         const blob = new Blob([decodedData], { type: fileExtension });
         const fileUrlObj = URL.createObjectURL(blob);
         setFileUrl(fileUrlObj);
+        console.log(fileUrlObj)
       }
     } catch (error) {
       console.error(error);
@@ -35,7 +36,7 @@ const FileDetails = () => {
     try {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
-        navigate('-1');
+        navigate(-1);
       }
     } catch (error) {
       console.error(error);
@@ -67,12 +68,12 @@ const FileDetails = () => {
       )}
       <h2>File Details</h2>
       <p>File Name: {file.name}</p>
-      <p>Comment: {file.comment}</p>
+      <p>Comment: {file.comment || ''}</p>
       <hr />
       <p>Original Name: {file.original_name}</p>
       <p>File Size: {file.size}</p>
       <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
-      <p>Last Download Date: {new Date(file.last_download_date).toLocaleDateString() || 'Never'}</p>
+      <p>Last Download Date: {file.last_download_date ? new Date(file.last_download_date).toLocaleDateString() : 'Never'}</p>
       <hr />
       <p>Special download link: <a href={`${window.location.origin}${file.special_link}`}>{window.location.origin}{file.special_link}</a></p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
