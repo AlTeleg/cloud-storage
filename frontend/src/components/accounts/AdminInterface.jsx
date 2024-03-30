@@ -278,7 +278,7 @@ export const AllFiles = () => {
   };
 
   const handleClickFile = (fileId) => {
-    navigate(`files/${fileId}/`)
+    navigate(`/files/${fileId}/`)
   }
 
 
@@ -288,7 +288,7 @@ export const AllFiles = () => {
 
       <ul>
         {files.map((file) => (
-          <li key={file.id} onClick={() => handleClickFile(file.id)}>
+          <li className='admin-filelist-item' key={file.id} onClick={() => handleClickFile(file.id)}>
             {file.name}
             <button onClick={() => handleDeleteFile(file.id)}>Delete File</button>
           </li>

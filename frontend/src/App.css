@@ -50,11 +50,7 @@ form input {
     margin-bottom: 20px;
 }
 
-.last-downloaded-file-item {
-    cursor: pointer;
-}
-
-.img-filelist-item {
+.last-downloaded-file-item, .admin-filelist-item, .img-filelist-item {
     cursor: pointer;
 }
 
@@ -66,6 +62,6 @@ form input {
     margin: 1px 20px; 
 }
 
-.users-btn {
-    margin: 3px;
+.users-btn, .admin-filelist-btn {
+    margin: 0 3px;
 }
