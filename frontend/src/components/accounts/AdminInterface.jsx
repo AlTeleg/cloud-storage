@@ -281,7 +281,6 @@ export const AllFiles = () => {
     navigate(`/files/${fileId}/`)
   }
 
-
   return (
     <>
       <h3>{h3Option}</h3>
@@ -290,14 +289,14 @@ export const AllFiles = () => {
         {files.map((file) => (
           <li className='admin-filelist-item' key={file.id} onClick={() => handleClickFile(file.id)}>
             {file.name}
-            <button onClick={() => handleDeleteFile(file.id)}>Delete File</button>
+            <button className='admin-filelist-btn' onClick={() => handleDeleteFile(file.id)}>Delete File</button>
           </li>
         ))}
       </ul>
       <h4>Sort by:</h4>
       <ul>
         {fieldOptions.map((option) => (
-            <li key={option.value}>
+            <li className='sort-li' key={option.value}>
                 <label>
                     <input
                         type="radio"
@@ -314,7 +313,7 @@ export const AllFiles = () => {
       <h4>Filter by:</h4>
       <ul>
         {fieldOptions.map((option) => (
-            <li key={option.value}>
+            <li className='sort-li' key={option.value}>
                 <label>
                     <input
                         type="checkbox"
@@ -342,7 +341,6 @@ export const AllFiles = () => {
     </>
   );
 };
-
 
 export const AdminInterface = () => {
   return (

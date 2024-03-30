@@ -65,3 +65,7 @@ form input {
 .users-btn, .admin-filelist-btn {
     margin: 0 3px;
 }
+
+li.sort-li {
+    flex: none;
+}
