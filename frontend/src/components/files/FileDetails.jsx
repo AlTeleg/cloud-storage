@@ -7,7 +7,6 @@ import FileViewer from 'react-file-viewer';
 const FileDetails = () => {
   const { fileId } = useParams();
   const [file, setFile] = useState(null);
-  const [fileUrl, setFileUrl] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,11 +19,6 @@ const FileDetails = () => {
       if (response.statusText === "OK") {
         const fetchedFile = response.data.file;
         setFile(fetchedFile);
-        const decodedData = atob(fetchedFile.data);
-        const fileExtension = fetchedFile.name.split('.').pop().toLowerCase();
-        const blob = new Blob([decodedData], { type: fileExtension });
-        const fileUrlObj = URL.createObjectURL(blob);
-        setFileUrl(fileUrlObj);
       }
     } catch (error) {
       console.error(error);
@@ -55,7 +49,7 @@ const FileDetails = () => {
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsDataURL(fileUrl)}</p>
+          <p>{new FileReader().readAsText(file.data, 'base64')}</p>
           <br />
         </>
       ) : (
@@ -65,14 +59,15 @@ const FileDetails = () => {
           <img src={fileImg} alt="File" />
         )
       )}
+      <br />
       <h2>File Details</h2>
       <p>File Name: {file.name}</p>
-      <p>Comment: {file.comment || ''}</p>
+      <p>Comment: {file.comment == 'null' ? '' : file.comment}</p>
       <hr />
       <p>Original Name: {file.original_name}</p>
       <p>File Size: {file.size} bytes</p>
       <p>Upload Date: {new Date(file.upload_date).toLocaleDateString()}</p>
-      <p>Last Download Date: {file.last_download_date ? new Date(file.last_download_date).toLocaleDateString() : 'Never'}</p>
+      <p>Last Download Date: {file.last_download_date == 'None' ? 'never downloaded' : new Date(file.last_download_date).toLocaleDateString()}</p>
       <hr />
       <p>Special download link: <a href={`${window.location.origin}${file.special_link}`}>{window.location.origin}{file.special_link}</a></p>
       <button onClick={() => handleDelete(file.id)}>Delete</button>
