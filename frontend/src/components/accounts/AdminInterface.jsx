@@ -176,7 +176,6 @@ export const AllUsers = () => {
         <div>
           <h3>
             Selected User: {selectedUser.username}
-            <button onClick={handleGoBack}>Go Back</button>
           </h3>
           <h4>Files:</h4>
           <ul>
@@ -187,7 +186,8 @@ export const AllUsers = () => {
               </li>
             ))}
           </ul>
-          <button onClick={() => handleDeleteUser(selectedUser.id)}>Delete User</button>
+          <button className='users-btn' onClick={() => handleDeleteUser(selectedUser.id)}>Delete User</button>
+          <button className='users-btn' onClick={handleGoBack}>Go Back</button>
         </div>
       ) : (
         <div>
@@ -201,16 +201,15 @@ export const AllUsers = () => {
                 <p>Email: {user.email}</p>
                 <p>Is admin:{user.is_admin}</p>
                 <p>Is superuser:{user.is_superuser}</p>
-                <button onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
-                <br />
-                <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
+                <button className='users-btn' onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
+                <button className='users-btn' onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
             ))}
           </ul>
         </div>
       )}
       <hr />
-      <button onClick={handleBackHome}>Back to home</button>
+      <button className='users-btn' onClick={handleBackHome}>Back to home</button>
     </>
   );
 };

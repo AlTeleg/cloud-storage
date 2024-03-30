@@ -59,9 +59,13 @@ form input {
 }
 
 .filelist-button {
-    margin: 1px 5px;
+    margin: 10px 3px 3px 3px;
 }
 
 .file-details-delete-btn {
-    margin: 1px 5px; 
+    margin: 1px 20px; 
+}
+
+.users-btn {
+    margin: 3px;
 }
