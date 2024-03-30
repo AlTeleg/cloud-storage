@@ -64,12 +64,15 @@ const FileList = () => {
             <img
               src={fileImage}
               alt="file"
+              className='img-filelist-item'
               onClick={() => handleImageClick(file.id)}
             />
-            {file.name} ({file.size})
-            <button onClick={() => handleFileClick(file.id)}>Open File Details</button>
-            <button onClick={() => handleRename(file.id, file.name, file.comment)}>Change name and comment</button>
-            <button onClick={() => handleDelete(file.id)}>Delete</button>
+            <br />
+            {file.name} - {file.size} bytes 
+            <br />
+            <button className='filelist-button' onClick={() => handleFileClick(file.id)}>Open File Details</button>
+            <button className='filelist-button' onClick={() => handleRename(file.id, file.name, file.comment)}>Change name and comment</button>
+            <button className='filelist-button' onClick={() => handleDelete(file.id)}>Delete</button>
           </li>
         ))}
       </ul>

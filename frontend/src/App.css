@@ -53,3 +53,15 @@ form input {
 .last-downloaded-file-item {
     cursor: pointer;
 }
+
+.img-filelist-item {
+    cursor: pointer;
+}
+
+.filelist-button {
+    margin: 1px 5px;
+}
+
+.file-details-delete-btn {
+    margin: 1px 5px; 
+}

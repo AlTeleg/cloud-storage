@@ -27,6 +27,7 @@ const FileDownload = () => {
   return (
     <>
       <h2>Download File - id: {fileId}</h2>
+      <br />
       <button onClick={downloadFile}>Download</button>
     </>
   );

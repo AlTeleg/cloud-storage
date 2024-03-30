@@ -31,7 +31,7 @@ const HomePage = () => {
     fetchFiles();
   }, []);
 
-  const handleClick = async (fileId) => {
+  const handleClick = (fileId) => {
     navigate(`/files/${fileId}/`)
   }
 
@@ -59,7 +59,7 @@ const HomePage = () => {
       <ul>
         {lastDownloadedFiles.map((file) => (
           <li key={file.id} className='last-downloaded-file-item' onClick={() => handleClick(file.id)}>
-            {file.name} - {file.size}byte
+            {file.name} - {file.size} bytes
           </li>
         ))}
       </ul>

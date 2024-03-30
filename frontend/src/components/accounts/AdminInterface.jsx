@@ -202,6 +202,7 @@ export const AllUsers = () => {
                 <p>Is admin:{user.is_admin}</p>
                 <p>Is superuser:{user.is_superuser}</p>
                 <button onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
+                <br />
                 <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
             ))}
@@ -277,6 +278,10 @@ export const AllFiles = () => {
     navigate('/admin/')
   };
 
+  const handleClickFile = (fileId) => {
+    navigate(`files/${fileId}/`)
+  }
+
 
   return (
     <>
@@ -284,7 +289,7 @@ export const AllFiles = () => {
 
       <ul>
         {files.map((file) => (
-          <li key={file.id}>
+          <li key={file.id} onClick={() => handleClickFile(file.id)}>
             {file.name}
             <button onClick={() => handleDeleteFile(file.id)}>Delete File</button>
           </li>
@@ -300,7 +305,7 @@ export const AllFiles = () => {
                         name="field"
                         value={option.value}
                         checked={selectedSortField === option.value}
-                         onChange={() => handleRadioSortChange(option.value)}
+                        onChange={() => handleRadioSortChange(option.value)}
                     />
                     {option.label}
                 </label>

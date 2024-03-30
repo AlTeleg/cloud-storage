@@ -6,6 +6,7 @@ import FileViewer from 'react-file-viewer';
 
 const FileDetails = () => {
   const { fileId } = useParams();
+  const [fileTxt, setFileTxt] = useState(null);
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
@@ -44,12 +45,18 @@ const FileDetails = () => {
   const fileExtension = file.name.split('.').pop().toLowerCase();
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
 
+  const fr = new FileReader();
+  fr.onload(() => {
+    setFileTxt(fr.result)
+  })
+  fr.readAsText(`data:${fileExtension};base64,${file.data}`)
+
 
   return (
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(new Blob([file.data]), 'base64')}</p>
+          <p>{fileTxt}</p>
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
@@ -85,7 +92,7 @@ const FileDetails = () => {
       <p>Last Download Date: {file.last_download_date == 'None' ? 'never downloaded' : new Date(file.last_download_date).toLocaleDateString()}</p>
       <hr />
       <p>Special download link: <a href={`${window.location.origin}${file.special_link}`}>{window.location.origin}{file.special_link}</a></p>
-      <button onClick={() => handleDelete(file.id)}>Delete</button>
+      <button className='file-details-delete-btn'onClick={() => handleDelete(file.id)}>Delete</button>
     </>
   );
 };
