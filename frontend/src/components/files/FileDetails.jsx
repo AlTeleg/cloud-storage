@@ -6,7 +6,6 @@ import FileViewer from 'react-file-viewer';
 
 const FileDetails = () => {
   const { fileId } = useParams();
-  const [fileTxt, setFileTxt] = useState(null);
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
@@ -45,18 +44,12 @@ const FileDetails = () => {
   const fileExtension = file.name.split('.').pop().toLowerCase();
   const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
 
-  const fr = new FileReader();
-  fr.onload(() => {
-    setFileTxt(fr.result)
-  })
-  fr.readAsText(`data:${fileExtension};base64,${file.data}`)
-
 
   return (
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{fileTxt}</p>
+          <p>{atob(file.data)}</p>
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
