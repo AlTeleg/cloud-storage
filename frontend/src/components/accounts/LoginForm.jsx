@@ -28,7 +28,7 @@ const LoginForm = () => {
       const response = await Api.loginUser(formData);
       if (response.statusText === "OK") {
         dispatch(login());
-        navigate('/home');
+        navigate('/home/');
       }
     } catch (error) {
       setError(error);

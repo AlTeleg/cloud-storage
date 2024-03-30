@@ -36,15 +36,15 @@ const FileList = () => {
   };
 
   const handleImageClick = (fileId) => {
-    navigate(`/files/${fileId}/download`);
+    navigate(`/files/${fileId}/download/`);
   };
 
   const handleFileClick = (fileId) => {
-    navigate(`/files/${fileId}`);
+    navigate(`/files/${fileId}/`);
   };
 
   const handleRename = (fileId, fileName, fileComment) => {
-    navigate(`/files/${fileId}/rename`, {
+    navigate(`/files/${fileId}/rename/`, {
         state: {
             fileName: fileName,
             fileComment: fileComment

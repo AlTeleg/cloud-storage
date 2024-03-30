@@ -49,12 +49,27 @@ const FileDetails = () => {
     <>
       {fileExtension === 'txt' ? (
         <>
-          <p>{new FileReader().readAsText(file.data, 'base64')}</p>
-          <br />
+          <p>{new FileReader().readAsText(new Blob([file.data]), 'base64')}</p>
         </>
       ) : (
         mediaTypes.includes(fileExtension) ? (
-          <FileViewer fileType={fileExtension} filePath={`data:${fileExtension};base64,${file.data}`} />
+          <>
+            {['mp3', 'mp4', 'webm'].includes(fileExtension) ? (
+              <>
+                {fileExtension === 'mp3' ? (
+                  <audio controls>
+                    <source src={`data:${fileExtension};base64,${file.data}`} type={`audio/${fileExtension}`} />
+                  </audio>
+                ) : (
+                  <video controls>
+                    <source src={`data:${fileExtension};base64,${file.data}`} type={`video/${fileExtension}`} />
+                  </video>
+                )}
+              </>
+            ) : (
+              <FileViewer fileType={fileExtension} filePath={`data:${fileExtension};base64,${file.data}`} />
+            )}
+          </>
         ) : (
           <img src={fileImg} alt="File" />
         )

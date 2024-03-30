@@ -32,7 +32,7 @@ const HomePage = () => {
   }, []);
 
   const handleClick = async (fileId) => {
-    navigate(`/files/${fileId}`)
+    navigate(`/files/${fileId}/`)
   }
 
 
@@ -44,13 +44,13 @@ const HomePage = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/files/upload">Upload File</NavLink>
+            <NavLink to="/files/upload/">Upload File</NavLink>
           </li>
           <li>
-            <NavLink to="/files">All Files</NavLink>
+            <NavLink to="/files/">All Files</NavLink>
           </li>
           <li>
-            <NavLink to="/logout">Logout</NavLink>
+            <NavLink to="/logout/">Logout</NavLink>
           </li>
         </ul>
       </nav>

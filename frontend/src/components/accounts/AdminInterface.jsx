@@ -23,7 +23,7 @@ export const CreateUser = () => {
       };
       const response = await Api.createUser(userData);
       if (response.statusText === "OK") {
-        navigate('/admin/users')
+        navigate('/admin/users/')
       }
     } catch (e) {
       console.error('Failed to create user:', e);
@@ -39,7 +39,7 @@ export const CreateUser = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin')
+    navigate('/admin/')
   };
 
   return (
@@ -111,7 +111,7 @@ export const AllUsers = () => {
     try {
       const response = await Api.deleteUser(userId);
       if (response.statusText === "OK") {
-        fetchUsers();
+        navigate('/admin/users/')
       }
     } catch (error) {
       console.error('Failed to delete user:', error);
@@ -167,7 +167,7 @@ export const AllUsers = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin')
+    navigate('/admin/')
   };
 
   return (
@@ -274,7 +274,7 @@ export const AllFiles = () => {
   };
 
   const handleBackHome = () => {
-    navigate('/admin')
+    navigate('/admin/')
   };
 
 
@@ -347,13 +347,13 @@ export const AdminInterface = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/admin/create-user">Create User</Link>
+            <Link to="/admin/create-user/">Create User</Link>
           </li>
           <li>
-            <Link to="/admin/users">All Users</Link>
+            <Link to="/admin/users/">All Users</Link>
           </li>
           <li>
-            <Link to="/admin/files">All Files</Link>
+            <Link to="/admin/files/">All Files</Link>
           </li>
         </ul>
       </nav>
