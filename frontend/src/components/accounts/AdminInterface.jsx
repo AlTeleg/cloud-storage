@@ -249,16 +249,13 @@ export const AllFiles = () => {
     }
   };
 
-  const handleDeleteFile = async (fileId) => {
-    try {
-      const response = await Api.deleteFile(fileId);
-      if (response.statusText === "OK") {
-        fetchFiles();
-      }
-    } catch (e) {
-      console.error('Failed to delete file:', e);
-    }
-  };
+  const handleDeleteFile = async (e, fileId) => {
+    e.stopPropagation();
+    const response = await Api.deleteFile(fileId);
+    if (response.statusText === "OK") {
+      fetchFiles();
+    };
+  }
 
   const handleApplyFilterAndSort = () => {
     fetchFiles()
@@ -290,7 +287,7 @@ export const AllFiles = () => {
           <li className='admin-filelist-item' key={file.id} onClick={() => handleClickFile(file.id)}>
             {file.name}
             <hr />
-            <button className='admin-filelist-btn' onClick={() => handleDeleteFile(file.id)}>Delete File</button>
+            <button className='admin-filelist-btn' onClick={(e) => handleDeleteFile(e, file.id)}>Delete File</button>
           </li>
         ))}
       </ul>
