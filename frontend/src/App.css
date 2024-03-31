@@ -21,8 +21,6 @@ ul {
     margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
-    align-items: center; 
 }
 
 p {
@@ -73,9 +71,9 @@ li.sort-li {
 }
 
 li.file-li {
-    flex: 0 50px;
+    flex: 0 150px;
 }
 
 li.home-li {
-    flex: 0 400px;
+    flex: 0 550px;
 }
