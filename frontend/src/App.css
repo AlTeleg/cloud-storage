@@ -21,6 +21,8 @@ ul {
     margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
 }
 
 p {
@@ -76,5 +78,4 @@ li.file-li {
 
 li.home-li {
     flex: 0 400px;
-    align-self: center; 
 }
