@@ -289,6 +289,7 @@ export const AllFiles = () => {
         {files.map((file) => (
           <li className='admin-filelist-item' key={file.id} onClick={() => handleClickFile(file.id)}>
             {file.name}
+            <hr />
             <button className='admin-filelist-btn' onClick={() => handleDeleteFile(file.id)}>Delete File</button>
           </li>
         ))}
