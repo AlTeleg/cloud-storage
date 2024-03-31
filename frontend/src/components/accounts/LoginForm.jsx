@@ -32,7 +32,9 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.log(error)
-      setError(error.message);
+      if (error.response.data.error) {
+        setError(error.response.data.error)
+      }
     }
   };
   

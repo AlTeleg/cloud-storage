@@ -25,7 +25,9 @@ const Logout = () => {
         }, 1500);
       }
     } catch (e) {
-      setError(e);
+      if (e.response.data.error) {
+        setError(e);
+      }
       console.error(e);
     }
   };
