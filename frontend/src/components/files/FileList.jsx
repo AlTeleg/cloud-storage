@@ -60,7 +60,7 @@ const FileList = () => {
       ) : (
       <ul>
         {filesShown.map((file) => (
-          <li key={file.id}>
+          <li className='file-li' key={file.id}>
             <img
               src={fileImage}
               alt="file"

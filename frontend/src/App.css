@@ -67,5 +67,14 @@ form input {
 }
 
 li.sort-li {
-    flex: none;
+    flex: 1 0 50px;
+}
+
+li.file-li {
+    flex: 0 50px;
+}
+
+li.home-li {
+    flex: 0 400px;
+    align-self: center; 
 }
