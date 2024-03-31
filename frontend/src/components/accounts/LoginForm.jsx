@@ -31,8 +31,8 @@ const LoginForm = () => {
         navigate('/home/');
       }
     } catch (error) {
-      setError(error.response.data.error);
       console.log(error)
+      setError(error.message);
     }
   };
   

@@ -32,8 +32,8 @@ const FileUpload = () => {
       }
 
     } catch (error) {
-      setError(error.response.data.error);
       console.error(error);
+      setError(error.error);
     }
   };
 
