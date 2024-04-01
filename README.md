@@ -13,8 +13,12 @@ git clone https://github.com/AlTeleg/cloud-storage
 ### Step 2: Install dependencies for the frontend
 
 cd cloud-storage/frontend
+
+set port at services/config.py to HOST if needed! (optional)
+
 npm install
 npm run build
+
 
 ### Step 3: Create and activate a Python virtual environment
 

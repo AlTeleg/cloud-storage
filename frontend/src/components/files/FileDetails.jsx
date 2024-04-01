@@ -42,7 +42,7 @@ const FileDetails = () => {
   }
 
   const fileExtension = file.name.split('.').pop().toLowerCase();
-  const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3'];
+  const mediaTypes = ['pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3', 'jpg'];
 
   return (
     <>
