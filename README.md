@@ -14,7 +14,7 @@ git clone https://github.com/AlTeleg/cloud-storage
 
 cd cloud-storage/frontend
 
-set port at services/config.py to HOST if needed! (optional)
+set HOST at services/config.js! 
 
 npm install
 npm run build

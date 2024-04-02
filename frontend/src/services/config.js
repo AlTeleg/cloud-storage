@@ -1,2 +1,2 @@
-const HOST = 'http://194.67.125.137/';
+const HOST = 'your-host';
 export default HOST;
