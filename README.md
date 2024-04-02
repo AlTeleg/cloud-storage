@@ -58,4 +58,4 @@ python manage.py collectstatic
 
 python manage.py runserver 0.0.0.0:8000
 
-Now you can access the application by visiting http://localhost:8000 in your web browser.
+Now you can access the application by visiting your-host:8000 in your web browser.
