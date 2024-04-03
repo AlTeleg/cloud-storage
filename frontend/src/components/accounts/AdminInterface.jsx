@@ -308,7 +308,7 @@ export const AllFiles = () => {
             </li>
           ))}
       </ul>
-      <h4>Filter by:</h4>
+      <h4>Filter by {`(id and username strict, name contains, size +-10%, dates >= date)`}:</h4>
       <ul>
         {fieldOptions.map((option) => (
             <li className='sort-li' key={option.value}>

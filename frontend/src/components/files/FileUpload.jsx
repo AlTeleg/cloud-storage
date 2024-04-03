@@ -6,6 +6,7 @@ const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const [comment, setComment] = useState(null);
+  const [uploading, setUploading] = useState(null);
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
@@ -19,6 +20,7 @@ const FileUpload = () => {
   const handleSubmit =  async (event) => {
     event.preventDefault();
     setError(null);
+    setUploading('Uploading...');
     const formData = new FormData();
     formData.append('file', file);
     formData.append('comment', comment);
@@ -28,11 +30,13 @@ const FileUpload = () => {
       if (response.statusText === "OK") {
         setFile(null);
         setComment(null);
+        setUploading(null);
         navigate('/files/');
       }
 
     } catch (error) {
       console.error(error);
+      setUploading(null);
       if (error.response.data.error) {
         setError(error.response.data.error);
       }
@@ -44,6 +48,7 @@ const FileUpload = () => {
       <h2>Upload File</h2>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
+        {uploading && <p>{uploading}</p>}
         {error && <p>{error}</p>}
         <h4>Set file comment:</h4>
         <input type="text" onChange={handleCommentChange} value={comment}/>
