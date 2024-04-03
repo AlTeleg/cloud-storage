@@ -14,7 +14,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(logout())
+    dispatch(logout());
   }, []);
 
   const handleChange = e => {

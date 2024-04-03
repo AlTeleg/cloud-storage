@@ -1,9 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const NavigationMenu = () => {
   const { isAuthenticated } = useSelector(state => state.auth);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!(isAuthenticated) && !(location.pathname.includes('/login/') || location.pathname.includes('/register/'))) {
+      navigate('/login/')
+    }
+    }, [isAuthenticated]);
+
 
   return (
     <nav className='nav-menu'>
