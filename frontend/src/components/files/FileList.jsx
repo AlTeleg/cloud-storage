@@ -5,6 +5,7 @@ import fileImage from '../../img/file.png';
 
 const FileList = () => {
   const [filesShown, setFilesShown] = useState([]);
+  const [filesState, setFilesState] = useState('File list is empty');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,10 +14,12 @@ const FileList = () => {
 
   const fetchFiles = async () => {
     try {
+      setFilesState('Updating file list...')
       const response = await Api.getFiles();
       if (response.statusText === "OK") {
         if (response.data.files) {
-          setFilesShown(response.data.files)
+          setFilesShown(response.data.files);
+          setFilesState('File list is empty');
         }
       }
     } catch (error) {
@@ -56,7 +59,7 @@ const FileList = () => {
     <>
       <h2>Files</h2>
       {filesShown.length === 0 ? (
-      <p>File list is empty</p>
+      <p>{filesState}</p>
       ) : (
       <ul>
         {filesShown.map((file) => (
