@@ -8,7 +8,7 @@ const NavigationMenu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!(isAuthenticated) && !(location.pathname.includes('/login/') || location.pathname.includes('/register/'))) {
+    if (!(isAuthenticated) && !(location.pathname.includes('/login') || location.pathname.includes('/register'))) {
       navigate('/login/')
     }
     }, [isAuthenticated]);
