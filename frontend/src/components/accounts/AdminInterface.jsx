@@ -89,6 +89,7 @@ export const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [selectedUserFiles, setSelectedUserFiles] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -96,13 +97,16 @@ export const AllUsers = () => {
 
   const fetchUsers = async () => {
     try {
+      setLoading('Loading users...');
       const response = await Api.getUsers();
       if (response.statusText === "OK") {
+        setLoading(null);
         if (response.data.users) {
           setUsers(response.data.users);
         }
       }
     } catch (error) {
+      setLoading(null);
       console.error('Failed to fetch users:', error);
     }
   };
@@ -192,6 +196,7 @@ export const AllUsers = () => {
       ) : (
         <div>
           <h3>Users:</h3>
+          {loading && <p>{loading}</p>}
           <ul>
             {users.map((user) => (
               <li key={user.id}>
@@ -221,6 +226,7 @@ export const AllFiles = () => {
   const [selectedSortField, setSelectedSortField] = useState('upload_date');
   const [filterValue, setFilterValue] = useState(null);
   const [h3Option, setH3Option] = useState('Last day files');
+  const [loading, setLoading] = useState(null);
 
   useEffect(() => {
     fetchFiles();
@@ -238,13 +244,16 @@ export const AllFiles = () => {
 
   const fetchFiles = async () => {
     try {
+      setLoading('Loading files...');
       const response = await Api.getAllFiles(selectedSortField, selectedFilterField, filterValue);
       if (response.statusText === "OK") {
+        setLoading(null);
         if (response.data.files) {
           setFiles(response.data.files);
         }
       }
     } catch (e) {
+      setLoading(null);
       console.error('Failed to get files:', e);
     }
   };
@@ -281,7 +290,7 @@ export const AllFiles = () => {
   return (
     <>
       <h3>{h3Option}</h3>
-
+      {loading && <p>{loading}</p>}
       <ul>
         {files.map((file) => (
           <li className='admin-filelist-item' key={file.id} onClick={() => handleClickFile(file.id)}>
@@ -308,7 +317,7 @@ export const AllFiles = () => {
             </li>
           ))}
       </ul>
-      <h4>Filter by {`(id and username strict, name contains, size +-10%, dates >= date)`}:</h4>
+      <h4>Filter by {`(id and username strict, name contains, size +-10%, dates >= dd.mm.yyyy)`}:</h4>
       <ul>
         {fieldOptions.map((option) => (
             <li className='sort-li' key={option.value}>
