@@ -1,8 +1,10 @@
 # Cloud Storage Application
 
-Welcome to the Cloud Storage Application repository! This application allows you to store and manage files in the cloud.
+Welcome to the Cloud Storage Application repository!
+This application allows you to store and manage files in the cloud.
 
-'pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3' and 'txt' file extensions preview is supported!
+File preview is supported for following extensions: 
+'pdf', 'docx', 'png', 'xlsx', 'jpeg', 'gif', 'bmp', 'csv', 'mp4', 'webm', 'mp3' and 'txt'. 
 
 ## Deployment Instructions
 ```shell
@@ -27,21 +29,23 @@ venv\Scripts\activate  # Activate the virtual environment (optional) - for Windo
 
 ### Step 4: Set up the database and create a .env file
 
-Before proceeding with this step, make sure you have PostgreSQL installed and running. Then, create a new database for the application.
+Before proceeding with this step, make sure you have PostgreSQL installed and running. 
+Then, create a new database for the application.
 
-Next, create a file named .env in the cloud-storage/backend/ directory. Inside the file, add the following configuration variables:
+Next, create a file named .env in the cloud-storage/backend/ directory. 
+Inside the file, add the following configuration variables:
 
 SECRET_KEY=your-secret-key
 DEBUG=True  # or False, depending on your needs
 ALLOWED_HOSTS=your-allowed-hosts
-
 DB_NAME=your-db-name
 DB_USER=your-db-user
 DB_PASSWORD=your-db-password
 DB_HOST=your-db-host
 DB_PORT=your-db-port
 
-Replace your-secret-key, your-allowed-hosts, your-db-name, your-db-user, your-db-password, your-db-host, and your-db-port with your own values.
+Replace your-secret-key, your-allowed-hosts, your-db-name, your-db-user,
+your-db-password, your-db-host, and your-db-port with your own values.
 
 ### Step 5: Install dependencies for the backend
 
