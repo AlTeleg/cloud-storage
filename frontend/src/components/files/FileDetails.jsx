@@ -10,7 +10,7 @@ const FileDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchFileDetails()
+    fetchFileDetails();
   }, []);
 
   const fetchFileDetails = async () => {
@@ -30,6 +30,17 @@ const FileDetails = () => {
       const response = await Api.deleteFile(fileId);
       if (response.statusText === "OK") {
         navigate(-1);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChangeLink = async () => {
+    try {
+      const response = await Api.changeLink(fileId);
+      if (response.statusText === "OK") {
+        fetchFileDetails();
       }
     } catch (error) {
       console.error(error);
@@ -84,7 +95,8 @@ const FileDetails = () => {
       <p>Last Download Date: {file.last_download_date == 'None' ? 'never downloaded' : new Date(file.last_download_date).toLocaleDateString()}</p>
       <hr />
       <p>Special download link: <a href={`${window.location.origin}${file.special_link}`}>{window.location.origin}{file.special_link}</a></p>
-      <button className='file-details-delete-btn'onClick={() => handleDelete(file.id)}>Delete</button>
+      <button className='file-details-btn'onClick={() => handleChangeLink(file.id)}>Change link</button>
+      <button className='file-details-btn'onClick={() => handleDelete(file.id)}>Delete</button>
     </>
   );
 };

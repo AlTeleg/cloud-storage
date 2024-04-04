@@ -36,11 +36,15 @@ class Api {
     return response;
     }
 
-  async getFile(fileid) {
-    const response = await this.api.get(`files/${fileid}/get/`);
+  async getFile(fileId) {
+    const response = await this.api.get(`files/${fileId}/get/`);
     return response;
   }
 
+  async changeLink(fileId) {
+    const response = await this.api.patch(`files/${fileId}/special/`);
+    return response;
+  }
 
   async uploadFile(formData) {
     const response = await this.api.post('files/upload/', formData);
