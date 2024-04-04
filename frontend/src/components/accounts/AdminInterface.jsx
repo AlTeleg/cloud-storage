@@ -245,6 +245,7 @@ export const AllFiles = () => {
 
   const fetchFiles = async () => {
     try {
+      setFiles([]);
       setLoading('Loading files...');
       const response = await Api.getAllFiles(selectedSortField, selectedFilterField, filterValue);
       if (response.statusText === "OK") {
