@@ -18,6 +18,7 @@ const FileList = () => {
       const response = await Api.getFiles();
       if (response.statusText === "OK") {
         if (response.data.files) {
+          setFilesState('File list loaded and preparing...')
           setFilesShown(response.data.files);
           setFilesState('File list is empty');
         }

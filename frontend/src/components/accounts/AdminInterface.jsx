@@ -100,9 +100,10 @@ export const AllUsers = () => {
       setLoading('Loading users...');
       const response = await Api.getUsers();
       if (response.statusText === "OK") {
-        setLoading(null);
         if (response.data.users) {
+          setLoading('Users loaded and preparing...');
           setUsers(response.data.users);
+          setLoading(null);
         }
       }
     } catch (error) {
@@ -247,9 +248,10 @@ export const AllFiles = () => {
       setLoading('Loading files...');
       const response = await Api.getAllFiles(selectedSortField, selectedFilterField, filterValue);
       if (response.statusText === "OK") {
-        setLoading(null);
         if (response.data.files) {
+          setLoading('Files loaded and preparing...');
           setFiles(response.data.files);
+          setLoading(null);
         }
       }
     } catch (e) {
