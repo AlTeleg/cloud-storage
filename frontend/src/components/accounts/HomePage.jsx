@@ -7,8 +7,16 @@ const HomePage = () => {
 
   const navigate = useNavigate();
   const [lastDownloadedFiles, setLastDownloadedFiles] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    
+    const isAdminStored = sessionStorage.getItem('isAdmin');
+    if (isAdminStored === null) {
+       checkAdminStatus();
+    } else {
+       setIsAdmin(isAdminStored === 'true');
+    }
 
     const fetchFiles = async () => {
       try {
@@ -29,6 +37,23 @@ const HomePage = () => {
     fetchFiles();
   }, []);
 
+  const checkAdminStatus = async () => {
+    try {
+       const response = await Api.api.get('admin/');
+       if (response.statusText === "OK") {
+          setIsAdmin(true);
+          sessionStorage.setItem('isAdmin', 'true');
+       }
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        setIsAdmin(false);
+        sessionStorage.setItem('isAdmin', 'false');
+     } else {
+        console.error(error);
+     }
+  }
+ }
+
   const handleClick = (fileId) => {
     navigate(`/files/${fileId}/`)
   }
@@ -45,6 +70,11 @@ const HomePage = () => {
           <li className='home-li'>
             <NavLink to="/files/">All Files</NavLink>
           </li>
+          {isAdmin && (
+            <li className='home-li'>
+              <NavLink to="/admin/">Admin</NavLink>
+            </li>
+          )}
           <li className='home-li'>
             <NavLink to="/logout/">Logout</NavLink>
           </li>

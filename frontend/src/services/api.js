@@ -83,6 +83,11 @@ class Api {
     return response;
   }
 
+  async toggleAdmin(userId) {
+    const response = await this.api.patch(`admin/users/${userId}/`);
+    return response;
+  }
+
   async getAllFiles(sort = 'upload_date', filter = null, filterValue = null) {
     const response = await this.api.get('admin/files/get/', {
       params: {

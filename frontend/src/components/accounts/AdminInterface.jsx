@@ -90,6 +90,7 @@ export const AllUsers = () => {
   const [selectedUserFiles, setSelectedUserFiles] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -123,7 +124,7 @@ export const AllUsers = () => {
     }
   };
 
-  const handleViewUserFiles = async (userId, username) => {
+  const handleViewUserFiles = async (userId, username, isAdmin) => {
     try {
       let sort ='upload_date';
       let filter='user_id';
@@ -132,6 +133,7 @@ export const AllUsers = () => {
         setSelectedUser({
           id: userId,
           username: username,
+          isAdmin: isAdmin,
         });
         if (response.data.files) {
           setSelectedUserFiles(response.data.files);
@@ -175,6 +177,19 @@ export const AllUsers = () => {
     navigate('/admin/')
   };
 
+  const handleToggleAdmin = async (userId) => {
+    try {
+      const response = await Api.toggleAdmin(userId);
+      if (response.statusText === "OK") {
+        setSelectedUserFiles(null);
+        setSelectedUser(null);
+        fetchUsers();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {selectedUser ? (
@@ -192,6 +207,7 @@ export const AllUsers = () => {
             ))}
           </ul>
           <button className='users-btn' onClick={() => handleDeleteUser(selectedUser.id)}>Delete User</button>
+          <button className='users-btn' onClick={() => handleToggleAdmin(selectedUser.id)}>{selectedUser.isAdmin === 'Yes' ? 'Revoke admin' : 'Make admin'}</button>
           <button className='users-btn' onClick={handleGoBack}>Go Back</button>
         </div>
       ) : (
@@ -207,7 +223,8 @@ export const AllUsers = () => {
                 <p>Email: {user.email}</p>
                 <p>Is admin:{user.is_admin}</p>
                 <p>Is superuser:{user.is_superuser}</p>
-                <button className='users-btn' onClick={() => handleViewUserFiles(user.id, user.username)}>View Files</button>
+                <button className='users-btn' onClick={() => handleViewUserFiles(user.id, user.username, user.is_admin)}>View Files</button>
+                <button className='users-btn' onClick={() => handleToggleAdmin(user.id)}>{user.is_admin === 'Yes' ? 'Revoke admin' : 'Make admin'}</button>
                 <button className='users-btn' onClick={() => handleDeleteUser(user.id)}>Delete User</button>
               </li>
             ))}
