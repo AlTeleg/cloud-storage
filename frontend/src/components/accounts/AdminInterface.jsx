@@ -168,8 +168,8 @@ export const AllUsers = () => {
   };
 
   const handleGoBack = () => {
-    setSelectedUserFiles(null);
     setSelectedUser(null);
+    setSelectedUserFiles([]);
   };
 
   const handleBackHome = () => {
@@ -182,7 +182,7 @@ export const AllUsers = () => {
       if (response.statusText === "OK") {
           fetchUsers();
           setSelectedUser(null);
-          setSelectedUserFiles(null);
+          setSelectedUserFiles([]);
       }
     } catch (error) {
       console.error(error);
