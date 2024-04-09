@@ -11,6 +11,7 @@ const auth = createSlice({
     },
     logout(state) {
       state.isAuthenticated = false;
+      sessionStorage.removeItem('isAdmin');
     }
   }
 });

@@ -90,7 +90,6 @@ export const AllUsers = () => {
   const [selectedUserFiles, setSelectedUserFiles] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     fetchUsers();
