@@ -180,9 +180,9 @@ export const AllUsers = () => {
     try {
       const response = await Api.toggleAdmin(userId);
       if (response.statusText === "OK") {
-        setSelectedUser(null);
-        setSelectedUserFiles(null);
-        fetchUsers();
+          fetchUsers();
+          setSelectedUser(null);
+          setSelectedUserFiles(null);
       }
     } catch (error) {
       console.error(error);
